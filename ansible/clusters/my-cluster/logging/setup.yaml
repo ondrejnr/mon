@@ -170,7 +170,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: kibana.34.159.144.113.nip.io
+  - host: kibana..nip.io
     http:
       paths:
       - path: /

@@ -1,5 +1,5 @@
 k3s_version: "v1.29.0+k3s1"
-domain_base: "34.159.144.113.nip.io"
+domain_base: ".nip.io"
 flux_github_owner: "ondrejnr"
 flux_github_repo: "mon"
 flux_github_token: "{{ vault_github_token }}"

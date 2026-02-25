@@ -131,7 +131,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: apache.34.159.144.113.nip.io
+  - host: apache..nip.io
     http:
       paths:
       - path: /

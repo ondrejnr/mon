@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: moja-aplikacia.34.159.144.113.nip.io
+  - host: moja-aplikacia..nip.io
     http:
       paths:
       - path: /

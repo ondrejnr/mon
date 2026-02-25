@@ -10,8 +10,8 @@ spec:
   ref:
     branch: main
   secretRef:
-    name: flux-system
-  url: ssh://git@github.com/ondrejnr/mon
+    name: github-pat
+  url: https://github.com/ondrejnr/mon
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization

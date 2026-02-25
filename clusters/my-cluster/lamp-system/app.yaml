@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lamp
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apache-index
+  namespace: lamp
+  labels:
+    app: apache-php
+multiline: |
+  <h1>🚀 GitOps Rebirth!</h1>
+  <?php phpinfo(); ?>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-php
+  namespace: lamp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-php
+  template:
+    metadata:
+      labels:
+        app: apache-php
+    spec:
+      containers:
+        - name: apache
+          image: ondrejnr1/apache-php:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-php
+  namespace: lamp
+spec:
+  selector:
+    app: apache-php
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

@@ -18,7 +18,7 @@ data:
           - targets: ['localhost:9090']
       - job_name: 'node-exporter'
         static_configs:
-          - targets: ['10.156.15.202:9100']
+          - targets: ['IP_VM_ADRESA:9100']
       - job_name: 'apache'
         static_configs:
           - targets: ['apache-php.lamp:9117']
@@ -190,7 +190,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: grafana.34.89.208.249.nip.io
+  - host: grafana.IP_VM_ADRESA.nip.io
     http:
       paths:
       - path: /
@@ -211,7 +211,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: prometheus.34.89.208.249.nip.io
+  - host: prometheus.IP_VM_ADRESA.nip.io
     http:
       paths:
       - path: /
@@ -232,7 +232,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: alertmanager.34.89.208.249.nip.io
+  - host: alertmanager.IP_VM_ADRESA.nip.io
     http:
       paths:
       - path: /

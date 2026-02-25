@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -8,7 +9,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: moja-aplikacia.34.89.208.249.nip.io
+  - host: moja-aplikacia.IP_VM_ADRESA.nip.io
     http:
       paths:
       - path: /

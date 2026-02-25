@@ -12,10 +12,12 @@ if [ -z "$TOKEN" ]; then
 fi
 # 2. Zistenie aktuálnej verejnej IP adresy
 PUBLIC_IP=$(curl -s ifconfig.me)
+INTERNAL_IP=$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')
 echo "🌐 Identifikovaná IP servera: $PUBLIC_IP"
 # 3. Úprava lokálnych súborov (Nahradenie placeholderu realitou)
 echo "🔧 Kalibrujem konfiguráciu v YAML súboroch..."
 find . -type f -name "*.yaml" -exec sed -i "s/IP_VM_ADRESA/$PUBLIC_IP/g" {} +
+find . -type f -name "*.yaml" -exec sed -i "s/NODE_EXPORTER_IP/$INTERNAL_IP/g" {} +
 # 4. Synchronizácia GitHubu (Zápis aktuálnej IP do Zdroja pravdy)
 echo "⬆️ Odosielam novú IP adresu na GitHub..."
 git config user.name "GitOps Auto-Installer"

@@ -1,0 +1,66 @@
+{
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+        "creationTimestamp": "2026-02-25T01:24:00Z",
+        "deletionTimestamp": "2026-02-25T09:21:33Z",
+        "labels": {
+            "app.kubernetes.io/instance": "flux-system",
+            "app.kubernetes.io/part-of": "flux",
+            "app.kubernetes.io/version": "v2.8.0",
+            "kubernetes.io/metadata.name": "flux-system",
+            "kustomize.toolkit.fluxcd.io/name": "flux-system",
+            "kustomize.toolkit.fluxcd.io/namespace": "flux-system",
+            "pod-security.kubernetes.io/warn": "restricted",
+            "pod-security.kubernetes.io/warn-version": "latest"
+        },
+        "name": "flux-system",
+        "resourceVersion": "61777",
+        "uid": "fe9b28d9-57ee-433b-9d1b-a41543d3bff0"
+    },
+    "spec": {
+        "finalizers": [
+            "kubernetes"
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-02-25T09:21:38Z",
+                "message": "All resources successfully discovered",
+                "reason": "ResourcesDiscovered",
+                "status": "False",
+                "type": "NamespaceDeletionDiscoveryFailure"
+            },
+            {
+                "lastTransitionTime": "2026-02-25T09:21:38Z",
+                "message": "All legacy kube types successfully parsed",
+                "reason": "ParsedGroupVersions",
+                "status": "False",
+                "type": "NamespaceDeletionGroupVersionParsingFailure"
+            },
+            {
+                "lastTransitionTime": "2026-02-25T09:21:38Z",
+                "message": "All content successfully deleted, may be waiting on finalization",
+                "reason": "ContentDeleted",
+                "status": "False",
+                "type": "NamespaceDeletionContentFailure"
+            },
+            {
+                "lastTransitionTime": "2026-02-25T09:21:47Z",
+                "message": "Some resources are remaining: gitrepositories.source.toolkit.fluxcd.io has 1 resource instances",
+                "reason": "SomeResourcesRemain",
+                "status": "True",
+                "type": "NamespaceContentRemaining"
+            },
+            {
+                "lastTransitionTime": "2026-02-25T09:21:47Z",
+                "message": "Some content in the namespace has finalizers remaining: finalizers.fluxcd.io in 1 resource instances",
+                "reason": "SomeFinalizersRemain",
+                "status": "True",
+                "type": "NamespaceFinalizersRemaining"
+            }
+        ],
+        "phase": "Terminating"
+    }
+}

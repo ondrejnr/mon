@@ -183,6 +183,15 @@ for ing in $INGRESSES; do
       -p="[{\"op\": \"replace\", \"path\": \"/spec/rules/0/host\", \"value\": \"$ing.$TARGET_IP.nip.io\"}]" 2>/dev/null || true
 done
 
+
+# 7. OPRAVA NODE-EXPORTER IP
+echo "🔧 Opravujem node-exporter IP v Prometheus ConfigMap..."
+INTERNAL_IP=$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')
+echo "📍 Interná IP uzla: $INTERNAL_IP"
+kubectl patch configmap prometheus-config -n monitoring --type merge -p "{"data":{"prometheus.yml":"global:\n  scrape_interval: 15s\nscrape_configs:\n  - job_name: 'prometheus'\n    static_configs:\n      - targets: ['localhost:9090']\n  - job_name: 'node-exporter'\n    static_configs:\n      - targets: ['$INTERNAL_IP:9100']\n  - job_name: 'apache'\n    static_configs:\n      - targets: ['apache-php.lamp:9117']\n  - job_name: 'phpfpm'\n    static_configs:\n      - targets: ['apache-php.lamp:9253']\n  - job_name: 'postgresql'\n    static_configs:\n      - targets: ['postgresql.lamp:9187']\n  - job_name: 'grafana'\n    static_configs:\n      - targets: ['grafana.monitoring:80']\n"}}"
+kubectl rollout restart deployment prometheus -n monitoring
+echo "✅ Prometheus reštartovaný s correct IP"
+
 # 7. FINALNY TEST
 echo ""
 echo "======================================================="

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: nginx:latest  # SEM DAJ SVOJE MENO
+        image: nginx:latest
         ports:
         - containerPort: 80
 ---

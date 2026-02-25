@@ -27,18 +27,31 @@ spec:
         app: apache-php
     spec:
       containers:
-        - name: apache
-          image: ondrejnr1/apache-php:latest
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: web-content
-              mountPath: /var/www/html/index.php
-              subPath: index.php
-      volumes:
+      - name: apache
+        image: ondrejnr1/apache-php:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
         - name: web-content
-          configMap:
-            name: apache-index
+          mountPath: /var/www/html/index.php
+          subPath: index.php
+      - name: apache-exporter
+        image: lusotycoon/apache-exporter
+        ports:
+        - containerPort: 9117
+        args:
+        - "--scrape_uri=http://localhost/server-status?auto"
+      - name: phpfpm-exporter
+        image: hipages/php-fpm_exporter
+        ports:
+        - containerPort: 9253
+        env:
+        - name: PHP_FPM_SCRAPE_URI
+          value: "tcp://localhost:9000/status"
+      volumes:
+      - name: web-content
+        configMap:
+          name: apache-index
 ---
 apiVersion: v1
 kind: Service
@@ -49,9 +62,64 @@ spec:
   selector:
     app: apache-php
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+  - name: http
+    port: 80
+    targetPort: 80
+  - name: apache-exporter
+    port: 9117
+    targetPort: 9117
+  - name: phpfpm-exporter
+    port: 9253
+    targetPort: 9253
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+  namespace: lamp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgresql
+  template:
+    metadata:
+      labels:
+        app: postgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: postgres:15
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "supersecret"
+        - name: POSTGRES_DB
+          value: "appdb"
+      - name: postgres-exporter
+        image: prometheuscommunity/postgres-exporter
+        ports:
+        - containerPort: 9187
+        env:
+        - name: DATA_SOURCE_NAME
+          value: "postgresql://postgres:supersecret@localhost:5432/appdb?sslmode=disable"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql
+  namespace: lamp
+spec:
+  selector:
+    app: postgresql
+  ports:
+  - name: postgresql
+    port: 5432
+    targetPort: 5432
+  - name: postgres-exporter
+    port: 9187
+    targetPort: 9187
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -59,16 +127,17 @@ metadata:
   name: apache-ingress
   namespace: lamp
   annotations:
-    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
+  ingressClassName: traefik
   rules:
-    - host: "apache.34.159.144.113.nip.io"
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: apache-php
-                port:
-                  number: 80
+  - host: apache.34.159.144.113.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: apache-php
+            port:
+              number: 80

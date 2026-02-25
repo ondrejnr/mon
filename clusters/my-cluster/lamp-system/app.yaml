@@ -4,60 +4,12 @@ metadata:
   name: lamp
 ---
 apiVersion: v1
-kind: Service
+kind: ConfigMap
 metadata:
-  name: apache-php
+  name: apache-index
   namespace: lamp
-spec:
-  selector:
-    app: apache-php
-  ports:
-    - name: http
-      port: 80
-    - name: apache-metrics
-      port: 9117
-    - name: php-metrics
-      port: 9253
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgresql
-  namespace: lamp
-spec:
-  selector:
-    app: postgresql
-  ports:
-    - name: postgres
-      port: 5432
-    - name: postgres-metrics
-      port: 9187
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: postgresql
-  namespace: lamp
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postgresql
-  template:
-    metadata:
-      labels:
-        app: postgresql
-    spec:
-      containers:
-        - name: postgresql
-          image: postgres:15
-          env:
-            - name: POSTGRES_PASSWORD
-              value: "admin123"
-        - name: postgres-exporter
-          image: prometheuscommunity/postgres-exporter
-          ports:
-            - containerPort: 9187
+data:
+  index.php: "<h1>🚀 GitOps Rebirth: Automatika funguje!</h1><?php phpinfo(); ?>"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -79,14 +31,27 @@ spec:
           image: php:8.2-apache
           ports:
             - containerPort: 80
-        - name: apache-exporter
-          image: lusotycoon/apache-exporter
-          ports:
-            - containerPort: 9117
-        - name: phpfpm-exporter
-          image: hipages/php-fpm_exporter
-          ports:
-            - containerPort: 9253
+          volumeMounts:
+            - name: web-content
+              mountPath: /var/www/html/index.php
+              subPath: index.php
+      volumes:
+        - name: web-content
+          configMap:
+            name: apache-index
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-php
+  namespace: lamp
+spec:
+  selector:
+    app: apache-php
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

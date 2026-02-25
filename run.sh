@@ -130,6 +130,14 @@ for ns in flux-system lamp monitoring logging web-stack web storage; do
     kubectl create ns $ns --dry-run=client -o yaml | kubectl apply -f -
 done
 
+# Vytvoríme github-pat secret PRED bootstrapom
+echo "🔐 Vytváram github-pat secret pre Flux..."
+kubectl create secret generic github-pat \
+  --from-literal=username=ondrejnr \
+  --from-literal=password=${GITHUB_TOKEN} \
+  -n flux-system \
+  --dry-run=client -o yaml | kubectl apply -f -
+
 if ! kubectl get namespace flux-system >/dev/null 2>&1 || ! kubectl get deployment -n flux-system source-controller >/dev/null 2>&1; then
     echo "⚠️ Inštalujem Flux..."
     chroot /host /bin/bash -c "curl -s https://fluxcd.io/install.sh | bash"
@@ -138,7 +146,8 @@ if ! kubectl get namespace flux-system >/dev/null 2>&1 || ! kubectl get deployme
       --repository=mon \
       --branch=main \
       --path=ansible/clusters/my-cluster \
-      --personal"
+      --personal \
+      --token-auth"
 else
     echo "✅ Flux beží - aplikujem GitOps priamo..."
     kubectl apply -k "https://github.com/ondrejnr/mon//ansible/clusters/my-cluster?ref=main" --force

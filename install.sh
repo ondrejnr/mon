@@ -1,4 +1,5 @@
 #!/bin/bash
+# Tento skript spustí inštalačný kontajner so všetkými právami
 docker run --rm --privileged \
   -v /:/host \
   -v /run/systemd:/run/systemd \

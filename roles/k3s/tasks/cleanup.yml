@@ -1,0 +1,6 @@
+---
+- name: Cleanup conflicting components
+  shell: |
+    KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl delete daemonset node-exporter -n monitoring --ignore-not-found
+    KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl delete configmap kibana-kibana-helm-scripts -n logging --ignore-not-found
+  ignore_errors: yes

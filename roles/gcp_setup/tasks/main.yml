@@ -1,0 +1,13 @@
+---
+- name: Install required Python packages via apt
+  apt:
+    name:
+      - python3-google-auth
+      - python3-requests
+      - python3-kubernetes
+      - python3-yaml
+    state: present
+    update_cache: yes
+
+# Firewall sme nastavili manualne v GCP Console, tuto ulohu preskakujeme
+# aby sme sa vyhli potrebe Service Account JSON kluča

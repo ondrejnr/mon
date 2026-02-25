@@ -1,0 +1,54 @@
+---
+- name: Create logging namespace
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: logging
+
+- name: Check if Kibana is already deployed
+  shell: helm list -n logging | grep kibana
+  register: kibana_exists
+  ignore_errors: yes
+  changed_when: false
+
+- name: Add Elastic Helm repo
+  kubernetes.core.helm_repository:
+    name: elastic
+    repo_url: https://helm.elastic.co
+  when: kibana_exists.rc != 0
+
+- name: Deploy Elasticsearch
+  kubernetes.core.helm:
+    name: elasticsearch
+    chart_ref: elastic/elasticsearch
+    release_namespace: logging
+    values:
+      replicas: 1
+  when: kibana_exists.rc != 0
+
+- name: Deploy Kibana (skipping if exists)
+  kubernetes.core.helm:
+    name: kibana
+    chart_ref: elastic/kibana
+    release_namespace: logging
+    values:
+      ingress:
+        enabled: true
+        hosts:
+          - host: "kibana.{{ domain_base }}"
+            paths:
+              - path: /
+  when: kibana_exists.rc != 0
+
+- name: Deploy Fluentd DaemonSet
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: apps/v1
+      kind: DaemonSet
+      metadata:
+        name: fluentd
+        namespace: logging

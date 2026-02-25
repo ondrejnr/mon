@@ -4,3 +4,9 @@ resources:
   - flux-system/gotk-components.yaml
   - flux-system/gotk-sync.yaml
   - lamp-system/app.yaml
+  - monitoring/setup.yaml
+  - logging/setup.yaml
+  - storage/setup.yaml
+  - web-stack/setup.yaml
+  - my-custom-app/deployment.yaml
+  - my-custom-app/ingress.yaml

@@ -8,5 +8,6 @@ resources:
   - logging/setup.yaml
   - storage/setup.yaml
   - web-stack/setup.yaml
+  - web/setup.yaml
   - my-custom-app/deployment.yaml
   - my-custom-app/ingress.yaml

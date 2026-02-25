@@ -10,9 +10,10 @@ metadata:
   namespace: lamp
   labels:
     app: apache-php
-multiline: |
-  <h1>🚀 GitOps Rebirth!</h1>
-  <?php phpinfo(); ?>
+data:
+  index.php: |
+    <h1>🚀 GitOps Rebirth: Katastrofa zažehnaná!</h1>
+    <?php phpinfo(); ?>
 ---
 apiVersion: apps/v1
 kind: Deployment

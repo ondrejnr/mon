@@ -1,5 +1,5 @@
 #!/bin/bash
-source /scripts/common.sh
+source /scripts/common.sh 2>/dev/null
 log_section "3. FLUX BOOTSTRAP"
 
 for ns in flux-system lamp monitoring logging web-stack web storage; do

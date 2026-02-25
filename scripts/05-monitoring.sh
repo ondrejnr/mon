@@ -1,5 +1,5 @@
 #!/bin/bash
-source /scripts/common.sh
+source /scripts/common.sh 2>/dev/null
 log_section "5. OPRAVA MONITORINGU"
 
 # node-exporter Service

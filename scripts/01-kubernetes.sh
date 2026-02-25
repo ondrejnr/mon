@@ -1,5 +1,5 @@
 #!/bin/bash
-source /scripts/common.sh
+source /scripts/common.sh 2>/dev/null
 log_section "1. KUBERNETES"
 
 PUBLIC_IP=$(curl -s -m 10 ifconfig.me || curl -s -m 10 api.ipify.org || echo "127.0.0.1")

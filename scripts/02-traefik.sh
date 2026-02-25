@@ -1,5 +1,5 @@
 #!/bin/bash
-source /scripts/common.sh
+source /scripts/common.sh 2>/dev/null
 log_section "2. TRAEFIK"
 
 PUBLIC_IP=$(cat /tmp/public_ip)

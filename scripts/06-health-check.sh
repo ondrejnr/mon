@@ -1,5 +1,5 @@
 #!/bin/bash
-source /scripts/common.sh
+source /scripts/common.sh 2>/dev/null
 log_section "6. ZDRAVOTNÁ KONTROLA"
 
 TARGET_IP=$(cat /tmp/target_ip)

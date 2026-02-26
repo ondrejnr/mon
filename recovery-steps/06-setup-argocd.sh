@@ -2,6 +2,10 @@
 set -e
 echo "=== [6/7] ArgoCD ==="
 kubectl create namespace argocd 2>/dev/null || true
+
+# Odstránenie starých CRD (ak existujú) – predídeme chybe o príliš dlhých anotáciách
+kubectl delete crd applications.argoproj.io applicationsets.argoproj.io --ignore-not-found
+
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 sleep 30
 # Pridanie --insecure do argocd-server

@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   annotations:
-    deprecated.daemonset.template.generation: "3"
+    deprecated.daemonset.template.generation: "1"
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"name":"vector","namespace":"logging"},"spec":{"selector":{"matchLabels":{"app":"vector"}},"template":{"metadata":{"labels":{"app":"vector"}},"spec":{"containers":[{"args":["--config","/etc/vector/vector.yaml"],"env":[{"name":"VECTOR_SELF_NODE_NAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}}],"image":"timberio/vector:0.34.0-debian","name":"vector","securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/etc/vector/","name":"config","readOnly":true},{"mountPath":"/var/log/containers","name":"containers","readOnly":true},{"mountPath":"/var/log/pods","name":"pods","readOnly":true},{"mountPath":"/var/lib/docker/containers","name":"docker","readOnly":true}]}],"serviceAccountName":"vector","tolerations":[{"effect":"NoSchedule","operator":"Exists"}],"volumes":[{"configMap":{"name":"vector-config"},"name":"config"},{"hostPath":{"path":"/var/log/containers"},"name":"containers"},{"hostPath":{"path":"/var/log/pods"},"name":"pods"},{"hostPath":{"path":"/var/lib/docker/containers"},"name":"docker"}]}}}}
-  generation: 3
+  generation: 1
   name: vector
   namespace: logging
 spec:
@@ -15,8 +15,6 @@ spec:
       app: vector
   template:
     metadata:
-      annotations:
-        kubectl.kubernetes.io/restartedAt: "2026-02-26T16:48:35Z"
       labels:
         app: vector
     spec:
@@ -88,5 +86,5 @@ spec:
   numberAvailable: 1
   numberMisscheduled: 0
   numberReady: 1
-  observedGeneration: 3
+  observedGeneration: 1
   updatedNumberScheduled: 1

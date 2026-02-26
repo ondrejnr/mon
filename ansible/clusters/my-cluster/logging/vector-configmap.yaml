@@ -1,8 +1,4 @@
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: vector-config
-  namespace: logging
 data:
   vector.yaml: |
     sources:
@@ -16,11 +12,19 @@ data:
         source: |
           .pod_name = .kubernetes.pod_name
           .namespace = .kubernetes.pod_namespace
-          .status = "repaired"
     sinks:
       es_out:
         type: elasticsearch
         inputs: ["simple_remap"]
-        endpoints: ["http://elasticsearch.logging:9200"]
-        mode: "bulk"
-        index: "lamp-logs-%Y.%m.%d"
+        endpoints: ["http://elasticsearch:9200"]
+        mode: "data_stream"
+        data_stream:
+          type: "logs"
+          dataset: "lamp"
+          namespace: "default"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+  name: vector-config
+  namespace: logging

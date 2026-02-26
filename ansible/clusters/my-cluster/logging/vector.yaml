@@ -1,15 +1,22 @@
-sources:
-  all_logs:
-    type: kubernetes_logs
-transforms:
-  simple_remap:
-    type: remap
-    inputs: ["all_logs"]
-    source: |
-      .pod_name = .kubernetes.pod_name
-      .status = "repaired"
-sinks:
-  es_out:
-    type: elasticsearch
-    inputs: ["simple_remap"]
-    endpoint: "http://10.43.42.59:9200"
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vector-config
+  namespace: logging
+data:
+  vector.yaml: |
+    sources:
+      all_logs:
+        type: kubernetes_logs
+    transforms:
+      simple_remap:
+        type: remap
+        inputs: ["all_logs"]
+        source: |
+          .pod_name = .kubernetes.pod_name
+          .status = "repaired"
+    sinks:
+      es_out:
+        type: elasticsearch
+        inputs: ["simple_remap"]
+        endpoint: "http://10.43.42.59:9200"

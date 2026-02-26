@@ -28,5 +28,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ondrejnr/mon:latest
-            ondrejnr/mon:${{ github.sha }}
+            ondrejnr1/mon:latest
+            ondrejnr1/mon:${{ github.sha }}

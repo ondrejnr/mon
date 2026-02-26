@@ -1,85 +1,92 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: vector
-  namespace: logging
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: vector
-rules:
-- apiGroups: [""]
-  resources: ["pods", "namespaces"]
-  verbs: ["get", "list", "watch"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: vector
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: vector
-subjects:
-- kind: ServiceAccount
-  name: vector
-  namespace: logging
----
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "3"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"name":"vector","namespace":"logging"},"spec":{"selector":{"matchLabels":{"app":"vector"}},"template":{"metadata":{"labels":{"app":"vector"}},"spec":{"containers":[{"args":["--config","/etc/vector/vector.yaml"],"env":[{"name":"VECTOR_SELF_NODE_NAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}}],"image":"timberio/vector:0.34.0-debian","name":"vector","securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/etc/vector/","name":"config","readOnly":true},{"mountPath":"/var/log/containers","name":"containers","readOnly":true},{"mountPath":"/var/log/pods","name":"pods","readOnly":true},{"mountPath":"/var/lib/docker/containers","name":"docker","readOnly":true}]}],"serviceAccountName":"vector","tolerations":[{"effect":"NoSchedule","operator":"Exists"}],"volumes":[{"configMap":{"name":"vector-config"},"name":"config"},{"hostPath":{"path":"/var/log/containers"},"name":"containers"},{"hostPath":{"path":"/var/log/pods"},"name":"pods"},{"hostPath":{"path":"/var/lib/docker/containers"},"name":"docker"}]}}}}
+  generation: 3
   name: vector
   namespace: logging
 spec:
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: vector
   template:
     metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: "2026-02-26T16:48:35Z"
       labels:
         app: vector
     spec:
-      serviceAccountName: vector
       containers:
-      - name: vector
-        image: timberio/vector:0.34.0-debian
-        args:
+      - args:
         - --config
         - /etc/vector/vector.yaml
         env:
         - name: VECTOR_SELF_NODE_NAME
           valueFrom:
             fieldRef:
+              apiVersion: v1
               fieldPath: spec.nodeName
-        volumeMounts:
-        - name: config
-          mountPath: /etc/vector/
-          readOnly: true
-        - name: containers
-          mountPath: /var/log/containers
-          readOnly: true
-        - name: pods
-          mountPath: /var/log/pods
-          readOnly: true
-        - name: docker
-          mountPath: /var/lib/docker/containers
-          readOnly: true
+        image: timberio/vector:0.34.0-debian
+        imagePullPolicy: IfNotPresent
+        name: vector
+        resources: {}
         securityContext:
           privileged: true
-      volumes:
-      - name: config
-        configMap:
-          name: vector-config
-      - name: containers
-        hostPath:
-          path: /var/log/containers
-      - name: pods
-        hostPath:
-          path: /var/log/pods
-      - name: docker
-        hostPath:
-          path: /var/lib/docker/containers
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/vector/
+          name: config
+          readOnly: true
+        - mountPath: /var/log/containers
+          name: containers
+          readOnly: true
+        - mountPath: /var/log/pods
+          name: pods
+          readOnly: true
+        - mountPath: /var/lib/docker/containers
+          name: docker
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: vector
+      serviceAccountName: vector
+      terminationGracePeriodSeconds: 30
       tolerations:
       - effect: NoSchedule
         operator: Exists
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: vector-config
+        name: config
+      - hostPath:
+          path: /var/log/containers
+          type: ""
+        name: containers
+      - hostPath:
+          path: /var/log/pods
+          type: ""
+        name: pods
+      - hostPath:
+          path: /var/lib/docker/containers
+          type: ""
+        name: docker
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  currentNumberScheduled: 1
+  desiredNumberScheduled: 1
+  numberAvailable: 1
+  numberMisscheduled: 0
+  numberReady: 1
+  observedGeneration: 3
+  updatedNumberScheduled: 1

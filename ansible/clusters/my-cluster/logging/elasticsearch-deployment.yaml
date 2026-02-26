@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "5"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"elasticsearch","namespace":"logging"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"elasticsearch"}},"template":{"metadata":{"labels":{"app":"elasticsearch"}},"spec":{"containers":[{"env":[{"name":"discovery.type","value":"single-node"}],"image":"docker.elastic.co/elasticsearch/elasticsearch:8.11.0","name":"elasticsearch","ports":[{"containerPort":9200},{"containerPort":9300}]}]}}}}
+  generation: 5
+  name: elasticsearch
+  namespace: logging
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: elasticsearch
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+      - env:
+        - name: discovery.type
+          value: single-node
+        - name: xpack.security.enabled
+          value: "false"
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
+        imagePullPolicy: IfNotPresent
+        name: elasticsearch
+        ports:
+        - containerPort: 9200
+          protocol: TCP
+        - containerPort: 9300
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2026-02-26T16:25:30Z"
+    lastUpdateTime: "2026-02-26T16:25:30Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    type: Available
+  - lastTransitionTime: "2026-02-26T16:25:28Z"
+    lastUpdateTime: "2026-02-26T16:48:07Z"
+    message: ReplicaSet "elasticsearch-5f8b68595d" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    type: Progressing
+  observedGeneration: 5
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

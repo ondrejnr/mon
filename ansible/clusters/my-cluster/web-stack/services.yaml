@@ -4,15 +4,15 @@ items:
   kind: Service
   metadata:
     annotations:
-      argocd.argoproj.io/tracking-id: nginx-stack:/Service:web-stack/nginx-balancer
+      argocd.argoproj.io/tracking-id: web-stack-stack:/Service:web-stack/nginx-balancer
       kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"nginx-stack:/Service:web-stack/nginx-balancer"},"name":"nginx-balancer","namespace":"web-stack"},"spec":{"ports":[{"port":80,"targetPort":80}],"selector":{"app":"nginx-app"}}}
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"web-stack-stack:/Service:web-stack/nginx-balancer"},"name":"nginx-balancer","namespace":"web-stack"},"spec":{"ports":[{"port":80,"targetPort":80}],"selector":{"app":"nginx-app"}}}
     name: nginx-balancer
     namespace: web-stack
   spec:
-    clusterIP: 10.43.138.71
+    clusterIP: 10.43.24.177
     clusterIPs:
-    - 10.43.138.71
+    - 10.43.24.177
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -25,6 +25,5 @@ items:
       app: nginx-app
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

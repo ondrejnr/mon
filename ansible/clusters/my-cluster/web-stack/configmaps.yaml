@@ -1,0 +1,28 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    ca.crt: |
+      -----BEGIN CERTIFICATE-----
+      MIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
+      dmVyLWNhQDE3NzIwMjYxMDUwHhcNMjYwMjI1MTMyODI1WhcNMzYwMjIzMTMyODI1
+      WjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE3NzIwMjYxMDUwWTATBgcqhkjO
+      PQIBBggqhkjOPQMBBwNCAAQmMwFxPzFfutsOk73AwmN9a7oWm0jyevkVBqVHQ5gV
+      0e952oBQveMPbtJ82s5JB2isVYM7DRXLiHcKGLn0Vh0ao0IwQDAOBgNVHQ8BAf8E
+      BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUG3RhGTthqrEFSGLhlb18
+      ciRUIPgwCgYIKoZIzj0EAwIDSAAwRQIhAIPJHd8LCfa00hpdZVhTdu4KOT+NbjXF
+      nmI0hgUSqoxAAiB1Sw5XKkkCOKOxAaqtCRVlO7jzhidAmtJkCY6auLYHVg==
+      -----END CERTIFICATE-----
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ca.crt":"-----BEGIN CERTIFICATE-----\nMIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy\ndmVyLWNhQDE3NzIwMjYxMDUwHhcNMjYwMjI1MTMyODI1WhcNMzYwMjIzMTMyODI1\nWjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE3NzIwMjYxMDUwWTATBgcqhkjO\nPQIBBggqhkjOPQMBBwNCAAQmMwFxPzFfutsOk73AwmN9a7oWm0jyevkVBqVHQ5gV\n0e952oBQveMPbtJ82s5JB2isVYM7DRXLiHcKGLn0Vh0ao0IwQDAOBgNVHQ8BAf8E\nBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUG3RhGTthqrEFSGLhlb18\nciRUIPgwCgYIKoZIzj0EAwIDSAAwRQIhAIPJHd8LCfa00hpdZVhTdu4KOT+NbjXF\nnmI0hgUSqoxAAiB1Sw5XKkkCOKOxAaqtCRVlO7jzhidAmtJkCY6auLYHVg==\n-----END CERTIFICATE-----\n"},"kind":"ConfigMap","metadata":{"annotations":{"kubernetes.io/description":"Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."},"name":"kube-root-ca.crt","namespace":"web-stack"}}
+      kubernetes.io/description: Contains a CA bundle that can be used to verify the
+        kube-apiserver when using internal endpoints such as the internal service
+        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
+        of Kubernetes clusters.
+    name: kube-root-ca.crt
+    namespace: web-stack
+kind: List
+metadata:

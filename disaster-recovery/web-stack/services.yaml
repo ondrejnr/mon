@@ -25,6 +25,5 @@ items:
       app: nginx-app
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

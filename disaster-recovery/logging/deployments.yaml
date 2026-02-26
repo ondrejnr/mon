@@ -7,7 +7,6 @@ items:
       deployment.kubernetes.io/revision: "6"
       kubectl.kubernetes.io/last-applied-configuration: |
         {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"elasticsearch","namespace":"logging"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"elasticsearch"}},"template":{"metadata":{"labels":{"app":"elasticsearch"}},"spec":{"containers":[{"env":[{"name":"discovery.type","value":"single-node"}],"image":"docker.elastic.co/elasticsearch/elasticsearch:8.11.0","name":"elasticsearch","ports":[{"containerPort":9200},{"containerPort":9300}]}]}}}}
-    generation: 6
     name: elasticsearch
     namespace: logging
   spec:
@@ -51,8 +50,6 @@ items:
         schedulerName: default-scheduler
         securityContext: {}
         terminationGracePeriodSeconds: 30
-    availableReplicas: 1
-    conditions:
     - lastTransitionTime: "2026-02-26T16:25:30Z"
       lastUpdateTime: "2026-02-26T16:25:30Z"
       message: Deployment has minimum availability.
@@ -63,10 +60,7 @@ items:
       message: ReplicaSet "elasticsearch-85c4958876" has successfully progressed.
       reason: NewReplicaSetAvailable
       type: Progressing
-    observedGeneration: 6
-    readyReplicas: 1
     replicas: 1
-    updatedReplicas: 1
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -74,7 +68,6 @@ items:
       deployment.kubernetes.io/revision: "4"
       kubectl.kubernetes.io/last-applied-configuration: |
         {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"kibana","namespace":"logging"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"kibana"}},"template":{"metadata":{"labels":{"app":"kibana"}},"spec":{"containers":[{"env":[{"name":"ELASTICSEARCH_HOSTS","value":"http://elasticsearch:9200"}],"image":"docker.elastic.co/kibana/kibana:8.11.0","name":"kibana","ports":[{"containerPort":5601}]}]}}}}
-    generation: 4
     name: kibana
     namespace: logging
   spec:
@@ -114,8 +107,6 @@ items:
         schedulerName: default-scheduler
         securityContext: {}
         terminationGracePeriodSeconds: 30
-    availableReplicas: 1
-    conditions:
     - lastTransitionTime: "2026-02-26T16:25:30Z"
       lastUpdateTime: "2026-02-26T16:25:30Z"
       message: Deployment has minimum availability.
@@ -126,9 +117,6 @@ items:
       message: ReplicaSet "kibana-bd95d9fc7" has successfully progressed.
       reason: NewReplicaSetAvailable
       type: Progressing
-    observedGeneration: 4
-    readyReplicas: 1
     replicas: 1
-    updatedReplicas: 1
 kind: List
 metadata:

@@ -25,7 +25,6 @@ items:
       app: alertmanager
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 - apiVersion: v1
   kind: Service
   metadata:
@@ -51,7 +50,6 @@ items:
       app: grafana
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 - apiVersion: v1
   kind: Service
   metadata:
@@ -77,7 +75,6 @@ items:
       app: node-exporter
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 - apiVersion: v1
   kind: Service
   metadata:
@@ -103,6 +100,5 @@ items:
       app: prometheus
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

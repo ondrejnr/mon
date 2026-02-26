@@ -43,7 +43,6 @@ spec:
     app.kubernetes.io/name: ingress-nginx
   sessionAffinity: None
   type: LoadBalancer
-  loadBalancer:
     ingress:
     - ip: 10.156.15.202
       ipMode: VIP

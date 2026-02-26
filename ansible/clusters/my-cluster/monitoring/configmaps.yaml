@@ -1,0 +1,105 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    bank-status.json: |
+      {
+        "title": "Bank Infrastructure Status",
+        "panels": [
+          {
+            "title": "Apache Pods (Scaling)",
+            "type": "stat",
+            "targets": [{ "expr": "kube_deployment_status_replicas{deployment='apache-php'}" }]
+          },
+          {
+            "title": "Transaction Volume",
+            "type": "graph",
+            "targets": [{ "expr": "rate(node_network_receive_bytes_total[5m])" }]
+          }
+        ]
+      }
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"bank-status.json":"{\n  \"title\": \"Bank Infrastructure Status\",\n  \"panels\": [\n    {\n      \"title\": \"Apache Pods (Scaling)\",\n      \"type\": \"stat\",\n      \"targets\": [{ \"expr\": \"kube_deployment_status_replicas{deployment='apache-php'}\" }]\n    },\n    {\n      \"title\": \"Transaction Volume\",\n      \"type\": \"graph\",\n      \"targets\": [{ \"expr\": \"rate(node_network_receive_bytes_total[5m])\" }]\n    }\n  ]\n}\n"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"grafana_dashboard":"1"},"name":"bank-grafana-dashboard","namespace":"monitoring"}}
+    labels:
+      grafana_dashboard: "1"
+    name: bank-grafana-dashboard
+    namespace: monitoring
+- apiVersion: v1
+  data:
+    datasources.yaml: |
+      apiVersion: 1
+      datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus.monitoring:9090
+        access: proxy
+        isDefault: true
+  kind: ConfigMap
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: monitoring-stack:/ConfigMap:monitoring/grafana-datasources
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"datasources.yaml":"apiVersion: 1\ndatasources:\n- name: Prometheus\n  type: prometheus\n  url: http://prometheus.monitoring:9090\n  access: proxy\n  isDefault: true\n"},"kind":"ConfigMap","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/ConfigMap:monitoring/grafana-datasources"},"name":"grafana-datasources","namespace":"monitoring"}}
+    name: grafana-datasources
+    namespace: monitoring
+- apiVersion: v1
+  data:
+    ca.crt: |
+      -----BEGIN CERTIFICATE-----
+      MIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
+      dmVyLWNhQDE3NzIwMjYxMDUwHhcNMjYwMjI1MTMyODI1WhcNMzYwMjIzMTMyODI1
+      WjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE3NzIwMjYxMDUwWTATBgcqhkjO
+      PQIBBggqhkjOPQMBBwNCAAQmMwFxPzFfutsOk73AwmN9a7oWm0jyevkVBqVHQ5gV
+      0e952oBQveMPbtJ82s5JB2isVYM7DRXLiHcKGLn0Vh0ao0IwQDAOBgNVHQ8BAf8E
+      BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUG3RhGTthqrEFSGLhlb18
+      ciRUIPgwCgYIKoZIzj0EAwIDSAAwRQIhAIPJHd8LCfa00hpdZVhTdu4KOT+NbjXF
+      nmI0hgUSqoxAAiB1Sw5XKkkCOKOxAaqtCRVlO7jzhidAmtJkCY6auLYHVg==
+      -----END CERTIFICATE-----
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ca.crt":"-----BEGIN CERTIFICATE-----\nMIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy\ndmVyLWNhQDE3NzIwMjYxMDUwHhcNMjYwMjI1MTMyODI1WhcNMzYwMjIzMTMyODI1\nWjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE3NzIwMjYxMDUwWTATBgcqhkjO\nPQIBBggqhkjOPQMBBwNCAAQmMwFxPzFfutsOk73AwmN9a7oWm0jyevkVBqVHQ5gV\n0e952oBQveMPbtJ82s5JB2isVYM7DRXLiHcKGLn0Vh0ao0IwQDAOBgNVHQ8BAf8E\nBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUG3RhGTthqrEFSGLhlb18\nciRUIPgwCgYIKoZIzj0EAwIDSAAwRQIhAIPJHd8LCfa00hpdZVhTdu4KOT+NbjXF\nnmI0hgUSqoxAAiB1Sw5XKkkCOKOxAaqtCRVlO7jzhidAmtJkCY6auLYHVg==\n-----END CERTIFICATE-----\n"},"kind":"ConfigMap","metadata":{"annotations":{"kubernetes.io/description":"Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."},"name":"kube-root-ca.crt","namespace":"monitoring"}}
+      kubernetes.io/description: Contains a CA bundle that can be used to verify the
+        kube-apiserver when using internal endpoints such as the internal service
+        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
+        of Kubernetes clusters.
+    name: kube-root-ca.crt
+    namespace: monitoring
+- apiVersion: v1
+  data:
+    prometheus.yml: |
+      global:
+        scrape_interval: 15s
+      scrape_configs:
+        - job_name: 'prometheus'
+          static_configs:
+            - targets: ['localhost:9090']
+        - job_name: 'node-exporter'
+          static_configs:
+            - targets: ['node-exporter.monitoring.svc.cluster.local:9100']
+        - job_name: 'apache'
+          static_configs:
+            - targets: ['apache-php.lamp:9117']
+        - job_name: 'phpfpm'
+          static_configs:
+            - targets: ['apache-php.lamp:9253']
+        - job_name: 'postgresql'
+          static_configs:
+            - targets: ['postgresql.lamp:9187']
+        - job_name: 'grafana'
+          static_configs:
+            - targets: ['grafana.monitoring:80']
+  kind: ConfigMap
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: monitoring-stack:/ConfigMap:monitoring/prometheus-config
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"prometheus.yml":"global:\n  scrape_interval: 15s\nscrape_configs:\n  - job_name: 'prometheus'\n    static_configs:\n      - targets: ['localhost:9090']\n  - job_name: 'node-exporter'\n    static_configs:\n      - targets: ['node-exporter.monitoring.svc.cluster.local:9100']\n  - job_name: 'apache'\n    static_configs:\n      - targets: ['apache-php.lamp:9117']\n  - job_name: 'phpfpm'\n    static_configs:\n      - targets: ['apache-php.lamp:9253']\n  - job_name: 'postgresql'\n    static_configs:\n      - targets: ['postgresql.lamp:9187']\n  - job_name: 'grafana'\n    static_configs:\n      - targets: ['grafana.monitoring:80']\n"},"kind":"ConfigMap","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/ConfigMap:monitoring/prometheus-config"},"name":"prometheus-config","namespace":"monitoring"}}
+    name: prometheus-config
+    namespace: monitoring
+kind: List
+metadata:

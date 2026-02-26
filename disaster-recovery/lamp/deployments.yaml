@@ -7,7 +7,6 @@ items:
       argocd.argoproj.io/tracking-id: lamp-stack:apps/Deployment:lamp/apache-php
       deployment.kubernetes.io/revision: "1"
       kubectl.kubernetes.io/last-applied-configuration: |
-    generation: 1
     name: apache-php
     namespace: lamp
   spec:
@@ -76,8 +75,6 @@ items:
         schedulerName: default-scheduler
         securityContext: {}
         terminationGracePeriodSeconds: 30
-    availableReplicas: 1
-    conditions:
     - lastTransitionTime: "2026-02-26T16:06:10Z"
       lastUpdateTime: "2026-02-26T16:06:10Z"
       message: Deployment has minimum availability.
@@ -88,9 +85,6 @@ items:
       message: ReplicaSet "apache-php-66789c549b" has successfully progressed.
       reason: NewReplicaSetAvailable
       type: Progressing
-    observedGeneration: 1
-    readyReplicas: 1
     replicas: 1
-    updatedReplicas: 1
 kind: List
 metadata:

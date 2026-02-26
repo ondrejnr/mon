@@ -29,7 +29,6 @@ items:
       app: elasticsearch
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 - apiVersion: v1
   kind: Service
   metadata:
@@ -54,6 +53,5 @@ items:
       app: kibana
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

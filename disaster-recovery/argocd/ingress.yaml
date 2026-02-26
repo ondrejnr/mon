@@ -8,7 +8,6 @@ items:
         {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/backend-protocol":"HTTP","nginx.ingress.kubernetes.io/ssl-redirect":"false"},"name":"argocd-final","namespace":"argocd"},"spec":{"ingressClassName":"nginx","rules":[{"host":"argocd.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"argocd-server","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}]}}
       nginx.ingress.kubernetes.io/backend-protocol: HTTP
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    generation: 1
     name: argocd-final
     namespace: argocd
   spec:
@@ -24,7 +23,6 @@ items:
                 number: 80
           path: /
           pathType: Prefix
-    loadBalancer:
       ingress:
       - ip: 10.156.15.202
 kind: List

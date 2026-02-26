@@ -10,9 +10,9 @@ items:
     name: nginx-service
     namespace: web
   spec:
-    clusterIP: 10.43.39.155
+    clusterIP: 10.43.167.35
     clusterIPs:
-    - 10.43.39.155
+    - 10.43.167.35
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -25,6 +25,5 @@ items:
       app: nginx-web
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

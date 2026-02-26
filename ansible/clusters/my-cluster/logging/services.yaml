@@ -9,9 +9,9 @@ items:
     name: elasticsearch
     namespace: logging
   spec:
-    clusterIP: 10.43.184.106
+    clusterIP: 10.43.87.244
     clusterIPs:
-    - 10.43.184.106
+    - 10.43.87.244
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -29,7 +29,6 @@ items:
       app: elasticsearch
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 - apiVersion: v1
   kind: Service
   metadata:
@@ -39,9 +38,9 @@ items:
     name: kibana
     namespace: logging
   spec:
-    clusterIP: 10.43.111.202
+    clusterIP: 10.43.99.122
     clusterIPs:
-    - 10.43.111.202
+    - 10.43.99.122
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -54,6 +53,5 @@ items:
       app: kibana
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

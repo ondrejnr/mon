@@ -10,13 +10,10 @@ items:
       \ }]\n    }\n  ]\n}\n"
   kind: ConfigMap
   metadata:
-    creationTimestamp: '2026-02-25T18:48:27Z'
     labels:
       grafana_dashboard: '1'
     name: bank-grafana-dashboard
     namespace: monitoring
-    resourceVersion: '29193'
-    uid: cc35afea-9c50-4c55-a444-d7758cf02e75
 - apiVersion: v1
   data:
     datasources.yaml: "apiVersion: 1\ndatasources:\n- name: Prometheus\n  type: prometheus\n\
@@ -30,14 +27,11 @@ items:
         proxy\n  isDefault: true\n"},"kind":"ConfigMap","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/ConfigMap:monitoring/grafana-datasources"},"name":"grafana-datasources","namespace":"monitoring"}}
 
         '
-    creationTimestamp: '2026-02-25T17:38:59Z'
     labels:
       kustomize.toolkit.fluxcd.io/name: flux-system
       kustomize.toolkit.fluxcd.io/namespace: flux-system
     name: grafana-datasources
     namespace: monitoring
-    resourceVersion: '169189'
-    uid: b3e8364b-fa60-4472-9e54-62c9031fd6c0
 - apiVersion: v1
   data:
     ca.crt: '-----BEGIN CERTIFICATE-----
@@ -68,11 +62,8 @@ items:
         kube-apiserver when using internal endpoints such as the internal service
         IP or kubernetes.default.svc. No other usage is guaranteed across distributions
         of Kubernetes clusters.
-    creationTimestamp: '2026-02-25T17:38:54Z'
     name: kube-root-ca.crt
     namespace: monitoring
-    resourceVersion: '22885'
-    uid: e9e8ff69-0bf4-4cf3-883f-49abaa767404
 - apiVersion: v1
   data:
     prometheus.yml: "global:\n  scrape_interval: 15s\nscrape_configs:\n  - job_name:\
@@ -96,13 +87,10 @@ items:
         job_name: ''grafana''\n    static_configs:\n      - targets: [''grafana.monitoring:80'']\n"},"kind":"ConfigMap","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/ConfigMap:monitoring/prometheus-config"},"name":"prometheus-config","namespace":"monitoring"}}
 
         '
-    creationTimestamp: '2026-02-25T17:38:59Z'
     labels:
       kustomize.toolkit.fluxcd.io/name: flux-system
       kustomize.toolkit.fluxcd.io/namespace: flux-system
     name: prometheus-config
     namespace: monitoring
-    resourceVersion: '169188'
-    uid: b8e1536c-5525-42c8-95d3-74c5367919a5
 kind: List
 metadata: {}

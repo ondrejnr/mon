@@ -556,9 +556,7 @@ spec:
               rule: self.provider != 'generic' || !has(self.serviceAccountName)
             - message: cannot set both .spec.secretRef and .spec.serviceAccountName
               rule: '!has(self.secretRef) || !has(self.serviceAccountName)'
-          status:
             default:
-              observedGeneration: -1
             description: BucketStatus records the observed state of a Bucket.
             properties:
               artifact:
@@ -607,7 +605,6 @@ spec:
                 - revision
                 - url
                 type: object
-              conditions:
                 description: Conditions holds the conditions for the Bucket.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -625,7 +622,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -644,7 +640,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -670,7 +665,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last observed generation of
                   the Bucket object.
                 format: int64
@@ -691,7 +685,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -775,7 +768,6 @@ spec:
                 - name
                 type: object
             type: object
-          status:
             description: ExternalArtifactStatus defines the observed state of ExternalArtifact
             properties:
               artifact:
@@ -825,7 +817,6 @@ spec:
                 - revision
                 - url
                 type: object
-              conditions:
                 description: Conditions holds the conditions for the ExternalArtifact.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -843,7 +834,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -862,7 +852,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -887,7 +876,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -1139,9 +1127,7 @@ spec:
             - message: serviceAccountName can only be set when provider is 'azure'
               rule: '!has(self.serviceAccountName) || (has(self.provider) && self.provider
                 == ''azure'')'
-          status:
             default:
-              observedGeneration: -1
             description: GitRepositoryStatus records the observed state of a Git repository.
             properties:
               artifact:
@@ -1191,7 +1177,6 @@ spec:
                 - revision
                 - url
                 type: object
-              conditions:
                 description: Conditions holds the conditions for the GitRepository.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -1209,7 +1194,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -1228,7 +1212,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -1307,7 +1290,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: |-
                   ObservedGeneration is the last observed generation of the GitRepository
                   object.
@@ -1374,7 +1356,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -1583,9 +1564,7 @@ spec:
             x-kubernetes-validations:
             - message: spec.verify is only supported when spec.sourceRef.kind is 'HelmRepository'
               rule: '!has(self.verify) || self.sourceRef.kind == ''HelmRepository'''
-          status:
             default:
-              observedGeneration: -1
             description: HelmChartStatus records the observed state of the HelmChart.
             properties:
               artifact:
@@ -1635,7 +1614,6 @@ spec:
                 - revision
                 - url
                 type: object
-              conditions:
                 description: Conditions holds the conditions for the HelmChart.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -1653,7 +1631,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -1672,7 +1649,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -1703,7 +1679,6 @@ spec:
                   ObservedChartName is the last observed chart name as specified by the
                   resolved chart reference.
                 type: string
-              observedGeneration:
                 description: |-
                   ObservedGeneration is the last observed generation of the HelmChart
                   object.
@@ -1733,7 +1708,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -1927,9 +1901,7 @@ spec:
             required:
             - url
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: HelmRepositoryStatus records the observed state of the HelmRepository.
             properties:
               artifact:
@@ -1979,7 +1951,6 @@ spec:
                 - revision
                 - url
                 type: object
-              conditions:
                 description: Conditions holds the conditions for the HelmRepository.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -1997,7 +1968,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -2016,7 +1986,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -2042,7 +2011,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: |-
                   ObservedGeneration is the last observed generation of the HelmRepository
                   object.
@@ -2059,7 +2027,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -2320,9 +2287,7 @@ spec:
             - interval
             - url
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: OCIRepositoryStatus defines the observed state of OCIRepository
             properties:
               artifact:
@@ -2372,7 +2337,6 @@ spec:
                 - revision
                 - url
                 type: object
-              conditions:
                 description: Conditions holds the conditions for the OCIRepository.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -2390,7 +2354,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -2409,7 +2372,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -2435,7 +2397,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last observed generation.
                 format: int64
                 type: integer
@@ -2475,7 +2436,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -3157,12 +3117,9 @@ spec:
             - prune
             - sourceRef
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: KustomizationStatus defines the observed state of a kustomization.
             properties:
-              conditions:
                 items:
                   description: Condition contains details for one aspect of the current
                     state of this API Resource.
@@ -3179,7 +3136,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -3198,7 +3154,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -3320,7 +3275,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last reconciled generation.
                 format: int64
                 type: integer
@@ -3329,7 +3283,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -4562,12 +4515,9 @@ spec:
             - message: either chart or chartRef must be set
               rule: (has(self.chart) && !has(self.chartRef)) || (!has(self.chart)
                 && has(self.chartRef))
-          status:
             default:
-              observedGeneration: -1
             description: HelmReleaseStatus defines the observed state of a HelmRelease.
             properties:
-              conditions:
                 description: Conditions holds the conditions for the HelmRelease.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -4585,7 +4535,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -4604,7 +4553,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -4701,7 +4649,6 @@ spec:
                       description: OCIDigest is the digest of the OCI artifact associated
                         with the release.
                       type: string
-                    status:
                       description: Status is the current state of the release.
                       type: string
                     testHooks:
@@ -4850,7 +4797,6 @@ spec:
                   ObservedCommonMetadataDigest is the digest for the common metadata of
                   the last successful reconciliation attempt.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last observed generation.
                 format: int64
                 type: integer
@@ -4877,7 +4823,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -5152,12 +5097,9 @@ spec:
             - eventSources
             - providerRef
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: AlertStatus defines the observed state of the Alert.
             properties:
-              conditions:
                 description: Conditions holds the conditions for the Alert.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -5175,7 +5117,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -5194,7 +5135,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -5220,7 +5160,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last observed generation.
                 format: int64
                 type: integer
@@ -5229,7 +5168,6 @@ spec:
     served: true
     storage: false
     subresources:
-      status: {}
   - additionalPrinterColumns:
     - jsonPath: .metadata.creationTimestamp
       name: Age
@@ -5528,12 +5466,9 @@ spec:
             required:
             - type
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: ProviderStatus defines the observed state of the Provider.
             properties:
-              conditions:
                 description: Conditions holds the conditions for the Provider.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -5551,7 +5486,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -5570,7 +5504,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -5596,7 +5529,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last reconciled generation.
                 format: int64
                 type: integer
@@ -5605,7 +5537,6 @@ spec:
     served: true
     storage: false
     subresources:
-      status: {}
   - additionalPrinterColumns:
     - jsonPath: .metadata.creationTimestamp
       name: Age
@@ -5961,12 +5892,9 @@ spec:
             - secretRef
             - type
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: ReceiverStatus defines the observed state of the Receiver.
             properties:
-              conditions:
                 description: Conditions holds the conditions for the Receiver.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -5984,7 +5912,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -6003,7 +5930,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -6029,7 +5955,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last observed generation of
                   the Receiver object.
                 format: int64
@@ -6044,7 +5969,6 @@ spec:
     served: true
     storage: true
     subresources:
-      status: {}
   - additionalPrinterColumns:
     - jsonPath: .metadata.creationTimestamp
       name: Age
@@ -6184,12 +6108,9 @@ spec:
             - secretRef
             - type
             type: object
-          status:
             default:
-              observedGeneration: -1
             description: ReceiverStatus defines the observed state of the Receiver.
             properties:
-              conditions:
                 description: Conditions holds the conditions for the Receiver.
                 items:
                   description: Condition contains details for one aspect of the current
@@ -6207,7 +6128,6 @@ spec:
                         This may be an empty string.
                       maxLength: 32768
                       type: string
-                    observedGeneration:
                       description: |-
                         observedGeneration represents the .metadata.generation that the condition was set based upon.
                         For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
@@ -6226,7 +6146,6 @@ spec:
                       minLength: 1
                       pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
                       type: string
-                    status:
                       description: status of the condition, one of True, False, Unknown.
                       enum:
                       - "True"
@@ -6252,7 +6171,6 @@ spec:
                   reconcile request value, so a change of the annotation value
                   can be detected.
                 type: string
-              observedGeneration:
                 description: ObservedGeneration is the last observed generation of
                   the Receiver object.
                 format: int64
@@ -6273,7 +6191,6 @@ spec:
     served: true
     storage: false
     subresources:
-      status: {}
 ---
 apiVersion: v1
 kind: ServiceAccount

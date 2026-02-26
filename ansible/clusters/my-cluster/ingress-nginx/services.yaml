@@ -18,9 +18,11 @@ items:
     namespace: ingress-nginx
   spec:
     allocateLoadBalancerNodePorts: true
-    clusterIP: 10.43.203.244
+    clusterIP: 10.43.84.254
     clusterIPs:
-    - 10.43.203.244
+    - 10.43.84.254
+    externalIPs:
+    - 10.156.15.202
     externalTrafficPolicy: Cluster
     internalTrafficPolicy: Cluster
     ipFamilies:
@@ -29,13 +31,13 @@ items:
     ports:
     - appProtocol: http
       name: http
-      nodePort: 31379
+      nodePort: 32678
       port: 80
       protocol: TCP
       targetPort: http
     - appProtocol: https
       name: https
-      nodePort: 32031
+      nodePort: 32752
       port: 443
       protocol: TCP
       targetPort: https
@@ -45,7 +47,6 @@ items:
       app.kubernetes.io/name: ingress-nginx
     sessionAffinity: None
     type: LoadBalancer
-    loadBalancer:
       ingress:
       - ip: 10.156.15.202
         ipMode: VIP
@@ -64,9 +65,9 @@ items:
     name: ingress-nginx-controller-admission
     namespace: ingress-nginx
   spec:
-    clusterIP: 10.43.62.224
+    clusterIP: 10.43.9.49
     clusterIPs:
-    - 10.43.62.224
+    - 10.43.9.49
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -83,6 +84,5 @@ items:
       app.kubernetes.io/name: ingress-nginx
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

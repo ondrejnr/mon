@@ -34,6 +34,5 @@ items:
       app: apache-php
     sessionAffinity: None
     type: ClusterIP
-    loadBalancer: {}
 kind: List
 metadata:

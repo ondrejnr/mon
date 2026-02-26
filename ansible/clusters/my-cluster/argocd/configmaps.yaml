@@ -1,0 +1,273 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    resource.customizations.ignoreResourceUpdates.ConfigMap: "jqPathExpressions:\n\
+      \  # Ignore the cluster-autoscaler status\n  - '.metadata.annotations.\"cluster-autoscaler.kubernetes.io/last-updated\"\
+      '\n  # Ignore the annotation of the legacy Leases election\n  - '.metadata.annotations.\"\
+      control-plane.alpha.kubernetes.io/leader\"'\n"
+    resource.customizations.ignoreResourceUpdates.Endpoints: "jsonPointers:\n  - /metadata\n\
+      \  - /subsets\n"
+    resource.customizations.ignoreResourceUpdates.all: "jsonPointers:\n  - /status\n"
+    resource.customizations.ignoreResourceUpdates.apps_ReplicaSet: "jqPathExpressions:\n\
+      \  - '.metadata.annotations.\"deployment.kubernetes.io/desired-replicas\"'\n\
+      \  - '.metadata.annotations.\"deployment.kubernetes.io/max-replicas\"'\n  -\
+      \ '.metadata.annotations.\"rollout.argoproj.io/desired-replicas\"'\n"
+    resource.customizations.ignoreResourceUpdates.argoproj.io_Application: "jqPathExpressions:\n\
+      \  - '.metadata.annotations.\"notified.notifications.argoproj.io\"'\n  - '.metadata.annotations.\"\
+      argocd.argoproj.io/refresh\"'\n  - '.metadata.annotations.\"argocd.argoproj.io/hydrate\"\
+      '\n  - '.operation'\n"
+    resource.customizations.ignoreResourceUpdates.argoproj.io_Rollout: "jqPathExpressions:\n\
+      \  - '.metadata.annotations.\"notified.notifications.argoproj.io\"'\n"
+    resource.customizations.ignoreResourceUpdates.autoscaling_HorizontalPodAutoscaler: "jqPathExpressions:\n\
+      \  - '.metadata.annotations.\"autoscaling.alpha.kubernetes.io/behavior\"'\n\
+      \  - '.metadata.annotations.\"autoscaling.alpha.kubernetes.io/conditions\"'\n\
+      \  - '.metadata.annotations.\"autoscaling.alpha.kubernetes.io/metrics\"'\n \
+      \ - '.metadata.annotations.\"autoscaling.alpha.kubernetes.io/current-metrics\"\
+      '\n"
+    resource.customizations.ignoreResourceUpdates.discovery.k8s.io_EndpointSlice: "jsonPointers:\n\
+      \  - /metadata\n  - /endpoints\n  - /ports\n"
+    resource.exclusions: "### Network resources created by the Kubernetes control\
+      \ plane and excluded to reduce the number of watched events and UI clutter\n\
+      - apiGroups:\n  - ''\n  - discovery.k8s.io\n  kinds:\n  - Endpoints\n  - EndpointSlice\n\
+      ### Internal Kubernetes resources excluded reduce the number of watched events\n\
+      - apiGroups:\n  - coordination.k8s.io\n  kinds:\n  - Lease\n### Internal Kubernetes\
+      \ Authz/Authn resources excluded reduce the number of watched events\n- apiGroups:\n\
+      \  - authentication.k8s.io\n  - authorization.k8s.io\n  kinds:\n  - SelfSubjectReview\n\
+      \  - TokenReview\n  - LocalSubjectAccessReview\n  - SelfSubjectAccessReview\n\
+      \  - SelfSubjectRulesReview\n  - SubjectAccessReview\n### Intermediate Certificate\
+      \ Request excluded reduce the number of watched events\n- apiGroups:\n  - certificates.k8s.io\n\
+      \  kinds:\n  - CertificateSigningRequest\n- apiGroups:\n  - cert-manager.io\n\
+      \  kinds:\n  - CertificateRequest\n### Cilium internal resources excluded reduce\
+      \ the number of watched events and UI Clutter\n- apiGroups:\n  - cilium.io\n\
+      \  kinds:\n  - CiliumIdentity\n  - CiliumEndpoint\n  - CiliumEndpointSlice\n\
+      ### Kyverno intermediate and reporting resources excluded reduce the number\
+      \ of watched events and improve performance\n- apiGroups:\n  - kyverno.io\n\
+      \  - reports.kyverno.io\n  - wgpolicyk8s.io\n  kinds:\n  - PolicyReport\n  -\
+      \ ClusterPolicyReport\n  - EphemeralReport\n  - ClusterEphemeralReport\n  -\
+      \ AdmissionReport\n  - ClusterAdmissionReport\n  - BackgroundScanReport\n  -\
+      \ ClusterBackgroundScanReport\n  - UpdateRequest\n"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","data":{"resource.customizations.ignoreResourceUpdates.ConfigMap":"jqPathExpressions:\n  #
+        Ignore the cluster-autoscaler status\n  - ''.metadata.annotations.\"cluster-autoscaler.kubernetes.io/last-updated\"''\n  #
+        Ignore the annotation of the legacy Leases election\n  - ''.metadata.annotations.\"control-plane.alpha.kubernetes.io/leader\"''\n","resource.customizations.ignoreResourceUpdates.Endpoints":"jsonPointers:\n  -
+        /metadata\n  - /subsets\n","resource.customizations.ignoreResourceUpdates.all":"jsonPointers:\n  -
+        /status\n","resource.customizations.ignoreResourceUpdates.apps_ReplicaSet":"jqPathExpressions:\n  -
+        ''.metadata.annotations.\"deployment.kubernetes.io/desired-replicas\"''\n  -
+        ''.metadata.annotations.\"deployment.kubernetes.io/max-replicas\"''\n  - ''.metadata.annotations.\"rollout.argoproj.io/desired-replicas\"''\n","resource.customizations.ignoreResourceUpdates.argoproj.io_Application":"jqPathExpressions:\n  -
+        ''.metadata.annotations.\"notified.notifications.argoproj.io\"''\n  - ''.metadata.annotations.\"argocd.argoproj.io/refresh\"''\n  -
+        ''.metadata.annotations.\"argocd.argoproj.io/hydrate\"''\n  - ''.operation''\n","resource.customizations.ignoreResourceUpdates.argoproj.io_Rollout":"jqPathExpressions:\n  -
+        ''.metadata.annotations.\"notified.notifications.argoproj.io\"''\n","resource.customizations.ignoreResourceUpdates.autoscaling_HorizontalPodAutoscaler":"jqPathExpressions:\n  -
+        ''.metadata.annotations.\"autoscaling.alpha.kubernetes.io/behavior\"''\n  -
+        ''.metadata.annotations.\"autoscaling.alpha.kubernetes.io/conditions\"''\n  -
+        ''.metadata.annotations.\"autoscaling.alpha.kubernetes.io/metrics\"''\n  -
+        ''.metadata.annotations.\"autoscaling.alpha.kubernetes.io/current-metrics\"''\n","resource.customizations.ignoreResourceUpdates.discovery.k8s.io_EndpointSlice":"jsonPointers:\n  -
+        /metadata\n  - /endpoints\n  - /ports\n","resource.exclusions":"### Network
+        resources created by the Kubernetes control plane and excluded to reduce the
+        number of watched events and UI clutter\n- apiGroups:\n  - ''''\n  - discovery.k8s.io\n  kinds:\n  -
+        Endpoints\n  - EndpointSlice\n### Internal Kubernetes resources excluded reduce
+        the number of watched events\n- apiGroups:\n  - coordination.k8s.io\n  kinds:\n  -
+        Lease\n### Internal Kubernetes Authz/Authn resources excluded reduce the number
+        of watched events\n- apiGroups:\n  - authentication.k8s.io\n  - authorization.k8s.io\n  kinds:\n  -
+        SelfSubjectReview\n  - TokenReview\n  - LocalSubjectAccessReview\n  - SelfSubjectAccessReview\n  -
+        SelfSubjectRulesReview\n  - SubjectAccessReview\n### Intermediate Certificate
+        Request excluded reduce the number of watched events\n- apiGroups:\n  - certificates.k8s.io\n  kinds:\n  -
+        CertificateSigningRequest\n- apiGroups:\n  - cert-manager.io\n  kinds:\n  -
+        CertificateRequest\n### Cilium internal resources excluded reduce the number
+        of watched events and UI Clutter\n- apiGroups:\n  - cilium.io\n  kinds:\n  -
+        CiliumIdentity\n  - CiliumEndpoint\n  - CiliumEndpointSlice\n### Kyverno intermediate
+        and reporting resources excluded reduce the number of watched events and improve
+        performance\n- apiGroups:\n  - kyverno.io\n  - reports.kyverno.io\n  - wgpolicyk8s.io\n  kinds:\n  -
+        PolicyReport\n  - ClusterPolicyReport\n  - EphemeralReport\n  - ClusterEphemeralReport\n  -
+        AdmissionReport\n  - ClusterAdmissionReport\n  - BackgroundScanReport\n  -
+        ClusterBackgroundScanReport\n  - UpdateRequest\n"},"kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/name":"argocd-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/name: argocd-cm
+      app.kubernetes.io/part-of: argocd
+    name: argocd-cm
+    namespace: argocd
+    resourceVersion: '166274'
+    uid: 53ab6352-2ccd-4631-8129-acb5a617c2ff
+- apiVersion: v1
+  data:
+    server.insecure: 'true'
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/name":"argocd-cmd-params-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-cmd-params-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/name: argocd-cmd-params-cm
+      app.kubernetes.io/part-of: argocd
+    name: argocd-cmd-params-cm
+    namespace: argocd
+    resourceVersion: '191208'
+    uid: c082817b-9035-4561-bd75-9bfe2004cb65
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/name":"argocd-gpg-keys-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-gpg-keys-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/name: argocd-gpg-keys-cm
+      app.kubernetes.io/part-of: argocd
+    name: argocd-gpg-keys-cm
+    namespace: argocd
+    resourceVersion: '166283'
+    uid: 5c8737b4-354b-4056-b5af-d2f8918cbf44
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/component":"notifications-controller","app.kubernetes.io/name":"argocd-notifications-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-notifications-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/component: notifications-controller
+      app.kubernetes.io/name: argocd-notifications-controller
+      app.kubernetes.io/part-of: argocd
+    name: argocd-notifications-cm
+    namespace: argocd
+    resourceVersion: '166287'
+    uid: 01a5fb62-4be1-434f-97e1-e50675a70491
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/name":"argocd-rbac-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-rbac-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/name: argocd-rbac-cm
+      app.kubernetes.io/part-of: argocd
+    name: argocd-rbac-cm
+    namespace: argocd
+    resourceVersion: '166291'
+    uid: 110c8a0d-b19d-41f6-bbad-0bd5172eee56
+- apiVersion: v1
+  data:
+    ssh_known_hosts: '# This file was automatically generated by hack/update-ssh-known-hosts.sh.
+      DO NOT EDIT
+
+      [ssh.github.com]:443 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+
+      [ssh.github.com]:443 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+
+      [ssh.github.com]:443 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=
+
+      bitbucket.org ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPIQmuzMBuKdWeF4+a2sjSSpBK0iqitSQ+5BM9KhpexuGt20JpTVM7u5BDZngncgrqDMbWdxMWWOGtZ9UgbqgZE=
+
+      bitbucket.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIazEu89wgQZ4bqs3d63QSMzYVa0MuJ2e2gKTKqu+UUO
+
+      bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQeJzhupRu0u0cdegZIa8e86EG2qOCsIsD1Xw0xSeiPDlCr7kq97NLmMbpKTX6Esc30NuoqEEHCuc7yWtwp8dI76EEEB1VqY9QJq6vk+aySyboD5QF61I/1WeTwu+deCbgKMGbUijeXhtfbxSxm6JwGrXrhBdofTsbKRUsrN1WoNgUa8uqN1Vx6WAJw1JHPhglEGGHea6QICwJOAr/6mrui/oB7pkaWKHj3z7d1IC4KWLtY47elvjbaTlkN04Kc/5LFEirorGYVbt15kAUlqGM65pk6ZBxtaO3+30LVlORZkxOh+LKL/BvbZ/iRNhItLqNyieoQj/uh/7Iv4uyH/cV/0b4WDSd3DptigWq84lJubb9t/DnZlrJazxyDCulTmKdOR7vs9gMTo+uoIrPSb8ScTtvw65+odKAlBj59dhnVp9zd7QUojOpXlL62Aw56U4oO+FALuevvMjiWeavKhJqlR7i5n9srYcrNV7ttmDw7kf/97P5zauIhxcjX+xHv4M=
+
+      github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+
+      github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+
+      github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=
+
+      gitlab.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=
+
+      gitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf
+
+      gitlab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9
+
+      ssh.dev.azure.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+
+      vs-ssh.visualstudio.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+
+      '
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","data":{"ssh_known_hosts":"#
+        This file was automatically generated by hack/update-ssh-known-hosts.sh. DO
+        NOT EDIT\n[ssh.github.com]:443 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=\n[ssh.github.com]:443
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n[ssh.github.com]:443
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=\nbitbucket.org
+        ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPIQmuzMBuKdWeF4+a2sjSSpBK0iqitSQ+5BM9KhpexuGt20JpTVM7u5BDZngncgrqDMbWdxMWWOGtZ9UgbqgZE=\nbitbucket.org
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIazEu89wgQZ4bqs3d63QSMzYVa0MuJ2e2gKTKqu+UUO\nbitbucket.org
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQeJzhupRu0u0cdegZIa8e86EG2qOCsIsD1Xw0xSeiPDlCr7kq97NLmMbpKTX6Esc30NuoqEEHCuc7yWtwp8dI76EEEB1VqY9QJq6vk+aySyboD5QF61I/1WeTwu+deCbgKMGbUijeXhtfbxSxm6JwGrXrhBdofTsbKRUsrN1WoNgUa8uqN1Vx6WAJw1JHPhglEGGHea6QICwJOAr/6mrui/oB7pkaWKHj3z7d1IC4KWLtY47elvjbaTlkN04Kc/5LFEirorGYVbt15kAUlqGM65pk6ZBxtaO3+30LVlORZkxOh+LKL/BvbZ/iRNhItLqNyieoQj/uh/7Iv4uyH/cV/0b4WDSd3DptigWq84lJubb9t/DnZlrJazxyDCulTmKdOR7vs9gMTo+uoIrPSb8ScTtvw65+odKAlBj59dhnVp9zd7QUojOpXlL62Aw56U4oO+FALuevvMjiWeavKhJqlR7i5n9srYcrNV7ttmDw7kf/97P5zauIhxcjX+xHv4M=\ngithub.com
+        ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=\ngithub.com
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\ngithub.com
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=\ngitlab.com
+        ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=\ngitlab.com
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf\ngitlab.com
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9\nssh.dev.azure.com
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H\nvs-ssh.visualstudio.com
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H\n"},"kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/name":"argocd-ssh-known-hosts-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-ssh-known-hosts-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/name: argocd-ssh-known-hosts-cm
+      app.kubernetes.io/part-of: argocd
+    name: argocd-ssh-known-hosts-cm
+    namespace: argocd
+    resourceVersion: '166295'
+    uid: 721d76c8-ba86-4dc4-b713-a6b0197aa709
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"ConfigMap","metadata":{"labels":{"app.kubernetes.io/name":"argocd-tls-certs-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-tls-certs-cm","namespace":"argocd"}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
+    labels:
+      app.kubernetes.io/name: argocd-tls-certs-cm
+      app.kubernetes.io/part-of: argocd
+    name: argocd-tls-certs-cm
+    namespace: argocd
+    resourceVersion: '166299'
+    uid: addc8668-01cd-44c8-9aef-c78321c40145
+- apiVersion: v1
+  data:
+    ca.crt: '-----BEGIN CERTIFICATE-----
+
+      MIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
+
+      dmVyLWNhQDE3NzIwMjYxMDUwHhcNMjYwMjI1MTMyODI1WhcNMzYwMjIzMTMyODI1
+
+      WjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE3NzIwMjYxMDUwWTATBgcqhkjO
+
+      PQIBBggqhkjOPQMBBwNCAAQmMwFxPzFfutsOk73AwmN9a7oWm0jyevkVBqVHQ5gV
+
+      0e952oBQveMPbtJ82s5JB2isVYM7DRXLiHcKGLn0Vh0ao0IwQDAOBgNVHQ8BAf8E
+
+      BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUG3RhGTthqrEFSGLhlb18
+
+      ciRUIPgwCgYIKoZIzj0EAwIDSAAwRQIhAIPJHd8LCfa00hpdZVhTdu4KOT+NbjXF
+
+      nmI0hgUSqoxAAiB1Sw5XKkkCOKOxAaqtCRVlO7jzhidAmtJkCY6auLYHVg==
+
+      -----END CERTIFICATE-----
+
+      '
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubernetes.io/description: Contains a CA bundle that can be used to verify the
+        kube-apiserver when using internal endpoints such as the internal service
+        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
+        of Kubernetes clusters.
+    creationTimestamp: '2026-02-26T12:37:48Z'
+    name: kube-root-ca.crt
+    namespace: argocd
+    resourceVersion: '165740'
+    uid: c9966b3f-6b3f-4321-9856-800b093a540a
+kind: List
+metadata: {}

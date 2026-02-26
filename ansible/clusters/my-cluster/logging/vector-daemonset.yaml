@@ -71,9 +71,6 @@ spec:
       - name: config
         configMap:
           name: vector-config
-          items:
-          - key: vector.yaml
-            path: vector.yaml
       - name: containers
         hostPath:
           path: /var/log/containers

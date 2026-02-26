@@ -127,9 +127,8 @@ metadata:
   name: apache-ingress
   namespace: lamp
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
   - host: apache.34.89.208.249.nip.io
     http:

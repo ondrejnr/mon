@@ -186,9 +186,8 @@ metadata:
   name: grafana-ingress
   namespace: monitoring
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
   - host: grafana.34.89.208.249.nip.io
     http:
@@ -207,9 +206,8 @@ metadata:
   name: prometheus-ingress
   namespace: monitoring
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
   - host: prometheus.34.89.208.249.nip.io
     http:
@@ -228,9 +226,8 @@ metadata:
   name: alertmanager-ingress
   namespace: monitoring
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
   - host: alertmanager.34.89.208.249.nip.io
     http:

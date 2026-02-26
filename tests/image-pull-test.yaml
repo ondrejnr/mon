@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-pull-test
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitops-pull-test
+  template:
+    metadata:
+      labels:
+        app: gitops-pull-test
+    spec:
+      containers:
+      - name: test-container
+        image: busybox:latest  # Tu môžeš zmeniť na svoj súkromný image
+        command: ["sh", "-c", "echo 'Pull successful!' && sleep 3600"]
+      # imagePullSecrets:
+      # - name: tvoj-secret-ak-je-treba

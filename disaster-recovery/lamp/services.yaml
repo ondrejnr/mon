@@ -5,12 +5,13 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: lamp-stack:/Service:lamp/apache-php
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"lamp-stack:/Service:lamp/apache-php"},"name":"apache-php","namespace":"lamp"},"spec":{"ports":[{"name":"http","port":80,"targetPort":80},{"name":"apache-metrics","port":9117,"targetPort":9117},{"name":"php-metrics","port":9253,"targetPort":9253}],"selector":{"app":"apache-php"}}}
-    creationTimestamp: "2026-02-26T14:48:17Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"lamp-stack:/Service:lamp/apache-php"},"name":"apache-php","namespace":"lamp"},"spec":{"ports":[{"name":"http","port":80,"targetPort":80},{"name":"apache-metrics","port":9117,"targetPort":9117},{"name":"php-metrics","port":9253,"targetPort":9253}],"selector":{"app":"apache-php"}}}
+
+        '
+    creationTimestamp: '2026-02-26T14:48:17Z'
     name: apache-php
     namespace: lamp
-    resourceVersion: "191715"
+    resourceVersion: '191715'
     uid: 9afaae2a-3302-43c1-a847-4423e248362a
   spec:
     clusterIP: 10.43.210.98
@@ -42,13 +43,13 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    creationTimestamp: "2026-02-25T21:40:46Z"
+    creationTimestamp: '2026-02-25T21:40:46Z'
     labels:
       kustomize.toolkit.fluxcd.io/name: flux-system
       kustomize.toolkit.fluxcd.io/namespace: flux-system
     name: postgresql
     namespace: lamp
-    resourceVersion: "51682"
+    resourceVersion: '51682'
     uid: 9b1d01f8-34c4-4d9f-95de-a5c2856ad6e4
   spec:
     clusterIP: 10.43.70.225
@@ -74,5 +75,4 @@ items:
   status:
     loadBalancer: {}
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

@@ -4,9 +4,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"application-controller","app.kubernetes.io/name":"argocd-application-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-application-controller-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"namespaceSelector":{}}],"ports":[{"port":8082}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"application-controller","app.kubernetes.io/name":"argocd-application-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-application-controller-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"namespaceSelector":{}}],"ports":[{"port":8082}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: application-controller
@@ -14,7 +15,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-application-controller-network-policy
     namespace: argocd
-    resourceVersion: "166446"
+    resourceVersion: '166446'
     uid: c3e14139-3fd3-4866-b823-e5e5151921ab
   spec:
     ingress:
@@ -32,9 +33,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"applicationset-controller","app.kubernetes.io/name":"argocd-applicationset-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-applicationset-controller-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"namespaceSelector":{}}],"ports":[{"port":7000,"protocol":"TCP"},{"port":8080,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-applicationset-controller"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"applicationset-controller","app.kubernetes.io/name":"argocd-applicationset-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-applicationset-controller-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"namespaceSelector":{}}],"ports":[{"port":7000,"protocol":"TCP"},{"port":8080,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-applicationset-controller"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: applicationset-controller
@@ -42,7 +44,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-applicationset-controller-network-policy
     namespace: argocd
-    resourceVersion: "166376"
+    resourceVersion: '166376'
     uid: f3bd1b48-659e-4add-9442-95f8c75456b1
   spec:
     ingress:
@@ -62,9 +64,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"dex-server","app.kubernetes.io/name":"argocd-dex-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-dex-server-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}}}],"ports":[{"port":5556,"protocol":"TCP"},{"port":5557,"protocol":"TCP"}]},{"from":[{"namespaceSelector":{}}],"ports":[{"port":5558,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-dex-server"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"dex-server","app.kubernetes.io/name":"argocd-dex-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-dex-server-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}}}],"ports":[{"port":5556,"protocol":"TCP"},{"port":5557,"protocol":"TCP"}]},{"from":[{"namespaceSelector":{}}],"ports":[{"port":5558,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-dex-server"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: dex-server
@@ -72,7 +75,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-dex-server-network-policy
     namespace: argocd
-    resourceVersion: "166380"
+    resourceVersion: '166380'
     uid: 8e0b9bed-cb13-47be-b7a6-1cf5eda6f72c
   spec:
     ingress:
@@ -99,9 +102,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"notifications-controller","app.kubernetes.io/name":"argocd-notifications-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-notifications-controller-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"namespaceSelector":{}}],"ports":[{"port":9001,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-notifications-controller"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"notifications-controller","app.kubernetes.io/name":"argocd-notifications-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-notifications-controller-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"namespaceSelector":{}}],"ports":[{"port":9001,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-notifications-controller"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: notifications-controller
@@ -109,7 +113,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-notifications-controller-network-policy
     namespace: argocd
-    resourceVersion: "166384"
+    resourceVersion: '166384'
     uid: ed4f41e5-edd2-47fb-a653-8bc29e3548b7
   spec:
     ingress:
@@ -127,9 +131,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"redis","app.kubernetes.io/name":"argocd-redis","app.kubernetes.io/part-of":"argocd"},"name":"argocd-redis-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-repo-server"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}}}],"ports":[{"port":6379,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-redis"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"redis","app.kubernetes.io/name":"argocd-redis","app.kubernetes.io/part-of":"argocd"},"name":"argocd-redis-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-repo-server"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}}}],"ports":[{"port":6379,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-redis"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: redis
@@ -137,7 +142,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-redis-network-policy
     namespace: argocd
-    resourceVersion: "166388"
+    resourceVersion: '166388'
     uid: 48d65ea8-ba21-4653-9ba3-ce1b3e15f619
   spec:
     ingress:
@@ -163,9 +168,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"repo-server","app.kubernetes.io/name":"argocd-repo-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-repo-server-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-notifications-controller"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-applicationset-controller"}}}],"ports":[{"port":8081,"protocol":"TCP"}]},{"from":[{"namespaceSelector":{}}],"ports":[{"port":8084}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-repo-server"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"repo-server","app.kubernetes.io/name":"argocd-repo-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-repo-server-network-policy","namespace":"argocd"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-notifications-controller"}}},{"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-applicationset-controller"}}}],"ports":[{"port":8081,"protocol":"TCP"}]},{"from":[{"namespaceSelector":{}}],"ports":[{"port":8084}]}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-repo-server"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: repo-server
@@ -173,7 +179,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-repo-server-network-policy
     namespace: argocd
-    resourceVersion: "166451"
+    resourceVersion: '166451'
     uid: de11d9d5-cb43-49c2-88c2-118d374abbbb
   spec:
     ingress:
@@ -207,9 +213,10 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server-network-policy","namespace":"argocd"},"spec":{"ingress":[{}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}},"policyTypes":["Ingress"]}}
-    creationTimestamp: "2026-02-26T12:37:51Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server-network-policy","namespace":"argocd"},"spec":{"ingress":[{}],"podSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-server"}},"policyTypes":["Ingress"]}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:51Z'
     generation: 1
     labels:
       app.kubernetes.io/component: server
@@ -217,7 +224,7 @@ items:
       app.kubernetes.io/part-of: argocd
     name: argocd-server-network-policy
     namespace: argocd
-    resourceVersion: "166392"
+    resourceVersion: '166392'
     uid: 3e623643-c0db-4e4f-aefd-b7c60555e9cc
   spec:
     ingress:
@@ -228,5 +235,4 @@ items:
     policyTypes:
     - Ingress
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

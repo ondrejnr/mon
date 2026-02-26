@@ -5,14 +5,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:apps/DaemonSet:monitoring/node-exporter
-      deprecated.daemonset.template.generation: "1"
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/DaemonSet:monitoring/node-exporter"},"name":"node-exporter","namespace":"monitoring"},"spec":{"selector":{"matchLabels":{"app":"node-exporter"}},"template":{"metadata":{"labels":{"app":"node-exporter"}},"spec":{"containers":[{"args":["--path.procfs=/host/proc","--path.sysfs=/host/sys","--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)"],"image":"prom/node-exporter:latest","name":"node-exporter","ports":[{"containerPort":9100,"hostPort":9100}],"volumeMounts":[{"mountPath":"/host/proc","name":"proc","readOnly":true},{"mountPath":"/host/sys","name":"sys","readOnly":true}]}],"hostNetwork":true,"hostPID":true,"tolerations":[{"effect":"NoSchedule","operator":"Exists"}],"volumes":[{"hostPath":{"path":"/proc"},"name":"proc"},{"hostPath":{"path":"/sys"},"name":"sys"}]}}}}
-    creationTimestamp: "2026-02-26T13:11:19Z"
+      deprecated.daemonset.template.generation: '1'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/DaemonSet:monitoring/node-exporter"},"name":"node-exporter","namespace":"monitoring"},"spec":{"selector":{"matchLabels":{"app":"node-exporter"}},"template":{"metadata":{"labels":{"app":"node-exporter"}},"spec":{"containers":[{"args":["--path.procfs=/host/proc","--path.sysfs=/host/sys","--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)"],"image":"prom/node-exporter:latest","name":"node-exporter","ports":[{"containerPort":9100,"hostPort":9100}],"volumeMounts":[{"mountPath":"/host/proc","name":"proc","readOnly":true},{"mountPath":"/host/sys","name":"sys","readOnly":true}]}],"hostNetwork":true,"hostPID":true,"tolerations":[{"effect":"NoSchedule","operator":"Exists"}],"volumes":[{"hostPath":{"path":"/proc"},"name":"proc"},{"hostPath":{"path":"/sys"},"name":"sys"}]}}}}
+
+        '
+    creationTimestamp: '2026-02-26T13:11:19Z'
     generation: 1
     name: node-exporter
     namespace: monitoring
-    resourceVersion: "169262"
+    resourceVersion: '169262'
     uid: c7a4781a-e352-4f60-b213-82fee97eb5fc
   spec:
     revisionHistoryLimit: 10
@@ -59,11 +60,11 @@ items:
         volumes:
         - hostPath:
             path: /proc
-            type: ""
+            type: ''
           name: proc
         - hostPath:
             path: /sys
-            type: ""
+            type: ''
           name: sys
     updateStrategy:
       rollingUpdate:
@@ -79,5 +80,4 @@ items:
     observedGeneration: 1
     updatedNumberScheduled: 1
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

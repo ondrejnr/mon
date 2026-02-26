@@ -4,16 +4,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"applicationset-controller","app.kubernetes.io/name":"argocd-applicationset-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-applicationset-controller","namespace":"argocd"},"spec":{"ports":[{"name":"webhook","port":7000,"protocol":"TCP","targetPort":"webhook"},{"name":"metrics","port":8080,"protocol":"TCP","targetPort":"metrics"}],"selector":{"app.kubernetes.io/name":"argocd-applicationset-controller"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"applicationset-controller","app.kubernetes.io/name":"argocd-applicationset-controller","app.kubernetes.io/part-of":"argocd"},"name":"argocd-applicationset-controller","namespace":"argocd"},"spec":{"ports":[{"name":"webhook","port":7000,"protocol":"TCP","targetPort":"webhook"},{"name":"metrics","port":8080,"protocol":"TCP","targetPort":"metrics"}],"selector":{"app.kubernetes.io/name":"argocd-applicationset-controller"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: applicationset-controller
       app.kubernetes.io/name: argocd-applicationset-controller
       app.kubernetes.io/part-of: argocd
     name: argocd-applicationset-controller
     namespace: argocd
-    resourceVersion: "166312"
+    resourceVersion: '166312'
     uid: 0f4eb13c-4004-4eb9-a98b-a1d04b441995
   spec:
     clusterIP: 10.43.183.1
@@ -42,16 +43,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"dex-server","app.kubernetes.io/name":"argocd-dex-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-dex-server","namespace":"argocd"},"spec":{"ports":[{"appProtocol":"TCP","name":"http","port":5556,"protocol":"TCP","targetPort":5556},{"name":"grpc","port":5557,"protocol":"TCP","targetPort":5557},{"name":"metrics","port":5558,"protocol":"TCP","targetPort":5558}],"selector":{"app.kubernetes.io/name":"argocd-dex-server"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"dex-server","app.kubernetes.io/name":"argocd-dex-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-dex-server","namespace":"argocd"},"spec":{"ports":[{"appProtocol":"TCP","name":"http","port":5556,"protocol":"TCP","targetPort":5556},{"name":"grpc","port":5557,"protocol":"TCP","targetPort":5557},{"name":"metrics","port":5558,"protocol":"TCP","targetPort":5558}],"selector":{"app.kubernetes.io/name":"argocd-dex-server"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: dex-server
       app.kubernetes.io/name: argocd-dex-server
       app.kubernetes.io/part-of: argocd
     name: argocd-dex-server
     namespace: argocd
-    resourceVersion: "166317"
+    resourceVersion: '166317'
     uid: 6851db02-6187-4d30-850f-95c86d59f78c
   spec:
     clusterIP: 10.43.110.85
@@ -85,16 +87,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"metrics","app.kubernetes.io/name":"argocd-metrics","app.kubernetes.io/part-of":"argocd"},"name":"argocd-metrics","namespace":"argocd"},"spec":{"ports":[{"name":"metrics","port":8082,"protocol":"TCP","targetPort":8082}],"selector":{"app.kubernetes.io/name":"argocd-application-controller"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"metrics","app.kubernetes.io/name":"argocd-metrics","app.kubernetes.io/part-of":"argocd"},"name":"argocd-metrics","namespace":"argocd"},"spec":{"ports":[{"name":"metrics","port":8082,"protocol":"TCP","targetPort":8082}],"selector":{"app.kubernetes.io/name":"argocd-application-controller"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: metrics
       app.kubernetes.io/name: argocd-metrics
       app.kubernetes.io/part-of: argocd
     name: argocd-metrics
     namespace: argocd
-    resourceVersion: "166322"
+    resourceVersion: '166322'
     uid: 85a48082-2d2c-4727-b9c5-db59eeb51bf6
   spec:
     clusterIP: 10.43.185.199
@@ -119,16 +122,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"notifications-controller","app.kubernetes.io/name":"argocd-notifications-controller-metrics","app.kubernetes.io/part-of":"argocd"},"name":"argocd-notifications-controller-metrics","namespace":"argocd"},"spec":{"ports":[{"name":"metrics","port":9001,"protocol":"TCP","targetPort":9001}],"selector":{"app.kubernetes.io/name":"argocd-notifications-controller"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"notifications-controller","app.kubernetes.io/name":"argocd-notifications-controller-metrics","app.kubernetes.io/part-of":"argocd"},"name":"argocd-notifications-controller-metrics","namespace":"argocd"},"spec":{"ports":[{"name":"metrics","port":9001,"protocol":"TCP","targetPort":9001}],"selector":{"app.kubernetes.io/name":"argocd-notifications-controller"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: notifications-controller
       app.kubernetes.io/name: argocd-notifications-controller-metrics
       app.kubernetes.io/part-of: argocd
     name: argocd-notifications-controller-metrics
     namespace: argocd
-    resourceVersion: "166326"
+    resourceVersion: '166326'
     uid: f36d0eb3-2872-4a02-8697-7fc1504924a2
   spec:
     clusterIP: 10.43.255.216
@@ -153,16 +157,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"redis","app.kubernetes.io/name":"argocd-redis","app.kubernetes.io/part-of":"argocd"},"name":"argocd-redis","namespace":"argocd"},"spec":{"ports":[{"name":"tcp-redis","port":6379,"targetPort":6379}],"selector":{"app.kubernetes.io/name":"argocd-redis"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"redis","app.kubernetes.io/name":"argocd-redis","app.kubernetes.io/part-of":"argocd"},"name":"argocd-redis","namespace":"argocd"},"spec":{"ports":[{"name":"tcp-redis","port":6379,"targetPort":6379}],"selector":{"app.kubernetes.io/name":"argocd-redis"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: redis
       app.kubernetes.io/name: argocd-redis
       app.kubernetes.io/part-of: argocd
     name: argocd-redis
     namespace: argocd
-    resourceVersion: "166331"
+    resourceVersion: '166331'
     uid: 0b0f134c-3459-4d3d-9644-d6b882fc3529
   spec:
     clusterIP: 10.43.150.89
@@ -187,16 +192,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"repo-server","app.kubernetes.io/name":"argocd-repo-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-repo-server","namespace":"argocd"},"spec":{"ports":[{"name":"server","port":8081,"protocol":"TCP","targetPort":8081},{"name":"metrics","port":8084,"protocol":"TCP","targetPort":8084}],"selector":{"app.kubernetes.io/name":"argocd-repo-server"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"repo-server","app.kubernetes.io/name":"argocd-repo-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-repo-server","namespace":"argocd"},"spec":{"ports":[{"name":"server","port":8081,"protocol":"TCP","targetPort":8081},{"name":"metrics","port":8084,"protocol":"TCP","targetPort":8084}],"selector":{"app.kubernetes.io/name":"argocd-repo-server"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: repo-server
       app.kubernetes.io/name: argocd-repo-server
       app.kubernetes.io/part-of: argocd
     name: argocd-repo-server
     namespace: argocd
-    resourceVersion: "166335"
+    resourceVersion: '166335'
     uid: dd163f47-6ddc-4408-b6f5-7cdc8ad6c124
   spec:
     clusterIP: 10.43.90.69
@@ -225,16 +231,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server","namespace":"argocd"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":8080},{"name":"https","port":443,"protocol":"TCP","targetPort":8080}],"selector":{"app.kubernetes.io/name":"argocd-server"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server","namespace":"argocd"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":8080},{"name":"https","port":443,"protocol":"TCP","targetPort":8080}],"selector":{"app.kubernetes.io/name":"argocd-server"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: server
       app.kubernetes.io/name: argocd-server
       app.kubernetes.io/part-of: argocd
     name: argocd-server
     namespace: argocd
-    resourceVersion: "166339"
+    resourceVersion: '166339'
     uid: b3b03413-2ca4-42f4-8644-c875136c7baf
   spec:
     clusterIP: 10.43.218.172
@@ -263,16 +270,17 @@ items:
   kind: Service
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server-metrics","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server-metrics","namespace":"argocd"},"spec":{"ports":[{"name":"metrics","port":8083,"protocol":"TCP","targetPort":8083}],"selector":{"app.kubernetes.io/name":"argocd-server"}}}
-    creationTimestamp: "2026-02-26T12:37:50Z"
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server-metrics","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server-metrics","namespace":"argocd"},"spec":{"ports":[{"name":"metrics","port":8083,"protocol":"TCP","targetPort":8083}],"selector":{"app.kubernetes.io/name":"argocd-server"}}}
+
+        '
+    creationTimestamp: '2026-02-26T12:37:50Z'
     labels:
       app.kubernetes.io/component: server
       app.kubernetes.io/name: argocd-server-metrics
       app.kubernetes.io/part-of: argocd
     name: argocd-server-metrics
     namespace: argocd
-    resourceVersion: "166343"
+    resourceVersion: '166343'
     uid: db5a0b32-b945-4934-9427-37887824ba52
   spec:
     clusterIP: 10.43.104.109
@@ -294,5 +302,4 @@ items:
   status:
     loadBalancer: {}
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

@@ -5,14 +5,16 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: lamp-stack:apps/Deployment:lamp/apache-php
-      deployment.kubernetes.io/revision: "27"
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"lamp-stack:apps/Deployment:lamp/apache-php"},"name":"apache-php","namespace":"lamp"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"apache-php"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"app":"apache-php"}},"spec":{"containers":[{"image":"httpd:alpine","name":"apache","ports":[{"containerPort":80}]},{"args":["sed -i 's/;pm.status_path = \\/status/pm.status_path = \\/status/g' /usr/local/etc/php-fpm.d/www.conf\nphp-fpm\n"],"command":["/bin/sh","-c"],"image":"php:fpm-alpine","name":"phpfpm","ports":[{"containerPort":9000}]},{"args":["--scrape_uri","http://localhost/server-status?auto"],"image":"bitnami/apache-exporter:latest","name":"apache-exporter","ports":[{"containerPort":9117}]},{"env":[{"name":"PHP_FPM_SCRAPE_URI","value":"tcp://localhost:9000/status"}],"image":"hipages/php-fpm_exporter:2","name":"phpfpm-exporter","ports":[{"containerPort":9253}]}]}}}}
-    creationTimestamp: "2026-02-26T14:08:42Z"
+      deployment.kubernetes.io/revision: '27'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"lamp-stack:apps/Deployment:lamp/apache-php"},"name":"apache-php","namespace":"lamp"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"apache-php"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"app":"apache-php"}},"spec":{"containers":[{"image":"httpd:alpine","name":"apache","ports":[{"containerPort":80}]},{"args":["sed
+        -i ''s/;pm.status_path = \\/status/pm.status_path = \\/status/g'' /usr/local/etc/php-fpm.d/www.conf\nphp-fpm\n"],"command":["/bin/sh","-c"],"image":"php:fpm-alpine","name":"phpfpm","ports":[{"containerPort":9000}]},{"args":["--scrape_uri","http://localhost/server-status?auto"],"image":"bitnami/apache-exporter:latest","name":"apache-exporter","ports":[{"containerPort":9117}]},{"env":[{"name":"PHP_FPM_SCRAPE_URI","value":"tcp://localhost:9000/status"}],"image":"hipages/php-fpm_exporter:2","name":"phpfpm-exporter","ports":[{"containerPort":9253}]}]}}}}
+
+        '
+    creationTimestamp: '2026-02-26T14:08:42Z'
     generation: 36
     name: apache-php
     namespace: lamp
-    resourceVersion: "195573"
+    resourceVersion: '195573'
     uid: 60cd9038-6c32-4b2e-945c-4310c21555d7
   spec:
     progressDeadlineSeconds: 600
@@ -26,7 +28,7 @@ items:
     template:
       metadata:
         annotations:
-          kubectl.kubernetes.io/restartedAt: "2026-02-26T14:48:18Z"
+          kubectl.kubernetes.io/restartedAt: '2026-02-26T14:48:18Z'
         labels:
           app: apache-php
       spec:
@@ -41,9 +43,11 @@ items:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
         - args:
-          - |
-            sed -i 's/;pm.status_path = \/status/pm.status_path = \/status/g' /usr/local/etc/php-fpm.d/www.conf
+          - 'sed -i ''s/;pm.status_path = \/status/pm.status_path = \/status/g'' /usr/local/etc/php-fpm.d/www.conf
+
             php-fpm
+
+            '
           command:
           - /bin/sh
           - -c
@@ -88,17 +92,17 @@ items:
   status:
     availableReplicas: 1
     conditions:
-    - lastTransitionTime: "2026-02-26T15:01:48Z"
-      lastUpdateTime: "2026-02-26T15:03:19Z"
+    - lastTransitionTime: '2026-02-26T15:01:48Z'
+      lastUpdateTime: '2026-02-26T15:03:19Z'
       message: ReplicaSet "apache-php-6c4757b76c" has successfully progressed.
       reason: NewReplicaSetAvailable
-      status: "True"
+      status: 'True'
       type: Progressing
-    - lastTransitionTime: "2026-02-26T15:23:47Z"
-      lastUpdateTime: "2026-02-26T15:23:47Z"
+    - lastTransitionTime: '2026-02-26T15:23:47Z'
+      lastUpdateTime: '2026-02-26T15:23:47Z'
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
-      status: "True"
+      status: 'True'
       type: Available
     observedGeneration: 36
     readyReplicas: 1
@@ -108,14 +112,15 @@ items:
   kind: Deployment
   metadata:
     annotations:
-      deployment.kubernetes.io/revision: "3"
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"postgresql","namespace":"lamp"},"spec":{"selector":{"matchLabels":{"app":"postgresql"}},"template":{"metadata":{"labels":{"app":"postgresql"}},"spec":{"containers":[{"env":[{"name":"POSTGRES_PASSWORD","value":"password"}],"image":"postgres:15-alpine","name":"postgres","ports":[{"containerPort":5432}]},{"env":[{"name":"DATA_SOURCE_NAME","value":"postgresql://postgres:password@localhost:5432/postgres?sslmode=disable"}],"image":"prometheuscommunity/postgres-exporter:latest","name":"postgres-exporter","ports":[{"containerPort":9187}]}]}}}}
-    creationTimestamp: "2026-02-26T13:40:42Z"
+      deployment.kubernetes.io/revision: '3'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"postgresql","namespace":"lamp"},"spec":{"selector":{"matchLabels":{"app":"postgresql"}},"template":{"metadata":{"labels":{"app":"postgresql"}},"spec":{"containers":[{"env":[{"name":"POSTGRES_PASSWORD","value":"password"}],"image":"postgres:15-alpine","name":"postgres","ports":[{"containerPort":5432}]},{"env":[{"name":"DATA_SOURCE_NAME","value":"postgresql://postgres:password@localhost:5432/postgres?sslmode=disable"}],"image":"prometheuscommunity/postgres-exporter:latest","name":"postgres-exporter","ports":[{"containerPort":9187}]}]}}}}
+
+        '
+    creationTimestamp: '2026-02-26T13:40:42Z'
     generation: 3
     name: postgresql
     namespace: lamp
-    resourceVersion: "177796"
+    resourceVersion: '177796'
     uid: 1ac019bf-f0f5-41de-b07c-92948140e75d
   spec:
     progressDeadlineSeconds: 600
@@ -132,7 +137,7 @@ items:
     template:
       metadata:
         annotations:
-          kubectl.kubernetes.io/restartedAt: "2026-02-26T14:21:37Z"
+          kubectl.kubernetes.io/restartedAt: '2026-02-26T14:21:37Z'
         labels:
           app: postgresql
       spec:
@@ -169,22 +174,21 @@ items:
   status:
     availableReplicas: 1
     conditions:
-    - lastTransitionTime: "2026-02-26T13:40:55Z"
-      lastUpdateTime: "2026-02-26T13:40:55Z"
+    - lastTransitionTime: '2026-02-26T13:40:55Z'
+      lastUpdateTime: '2026-02-26T13:40:55Z'
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
-      status: "True"
+      status: 'True'
       type: Available
-    - lastTransitionTime: "2026-02-26T13:40:42Z"
-      lastUpdateTime: "2026-02-26T14:21:40Z"
+    - lastTransitionTime: '2026-02-26T13:40:42Z'
+      lastUpdateTime: '2026-02-26T14:21:40Z'
       message: ReplicaSet "postgresql-5587b4db4c" has successfully progressed.
       reason: NewReplicaSetAvailable
-      status: "True"
+      status: 'True'
       type: Progressing
     observedGeneration: 3
     readyReplicas: 1
     replicas: 1
     updatedReplicas: 1
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

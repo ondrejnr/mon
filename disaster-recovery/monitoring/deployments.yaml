@@ -5,14 +5,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:apps/Deployment:monitoring/alertmanager
-      deployment.kubernetes.io/revision: "1"
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/Deployment:monitoring/alertmanager"},"name":"alertmanager","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"alertmanager"}},"template":{"metadata":{"labels":{"app":"alertmanager"}},"spec":{"containers":[{"image":"prom/alertmanager:latest","name":"alertmanager","ports":[{"containerPort":9093}]}]}}}}
-    creationTimestamp: "2026-02-26T15:19:20Z"
+      deployment.kubernetes.io/revision: '1'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/Deployment:monitoring/alertmanager"},"name":"alertmanager","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"alertmanager"}},"template":{"metadata":{"labels":{"app":"alertmanager"}},"spec":{"containers":[{"image":"prom/alertmanager:latest","name":"alertmanager","ports":[{"containerPort":9093}]}]}}}}
+
+        '
+    creationTimestamp: '2026-02-26T15:19:20Z'
     generation: 1
     name: alertmanager
     namespace: monitoring
-    resourceVersion: "194870"
+    resourceVersion: '194870'
     uid: ef4a859a-1cb1-4a21-88b8-7038d5ccf7ca
   spec:
     progressDeadlineSeconds: 600
@@ -49,17 +50,17 @@ items:
   status:
     availableReplicas: 1
     conditions:
-    - lastTransitionTime: "2026-02-26T15:19:25Z"
-      lastUpdateTime: "2026-02-26T15:19:25Z"
+    - lastTransitionTime: '2026-02-26T15:19:25Z'
+      lastUpdateTime: '2026-02-26T15:19:25Z'
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
-      status: "True"
+      status: 'True'
       type: Available
-    - lastTransitionTime: "2026-02-26T15:19:20Z"
-      lastUpdateTime: "2026-02-26T15:19:25Z"
+    - lastTransitionTime: '2026-02-26T15:19:20Z'
+      lastUpdateTime: '2026-02-26T15:19:25Z'
       message: ReplicaSet "alertmanager-796c45d697" has successfully progressed.
       reason: NewReplicaSetAvailable
-      status: "True"
+      status: 'True'
       type: Progressing
     observedGeneration: 1
     readyReplicas: 1
@@ -70,14 +71,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:apps/Deployment:monitoring/grafana
-      deployment.kubernetes.io/revision: "2"
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/Deployment:monitoring/grafana"},"name":"grafana","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"grafana"}},"template":{"metadata":{"labels":{"app":"grafana"}},"spec":{"containers":[{"env":[{"name":"GF_AUTH_ANONYMOUS_ENABLED","value":"true"},{"name":"GF_AUTH_ANONYMOUS_ORG_ROLE","value":"Admin"},{"name":"GF_AUTH_DISABLE_LOGIN_FORM","value":"true"}],"image":"grafana/grafana:10.1.0","name":"grafana","ports":[{"containerPort":3000}],"volumeMounts":[{"mountPath":"/etc/grafana/provisioning/datasources","name":"datasources"}]}],"volumes":[{"configMap":{"name":"grafana-datasources"},"name":"datasources"}]}}}}
-    creationTimestamp: "2026-02-26T13:11:19Z"
+      deployment.kubernetes.io/revision: '2'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/Deployment:monitoring/grafana"},"name":"grafana","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"grafana"}},"template":{"metadata":{"labels":{"app":"grafana"}},"spec":{"containers":[{"env":[{"name":"GF_AUTH_ANONYMOUS_ENABLED","value":"true"},{"name":"GF_AUTH_ANONYMOUS_ORG_ROLE","value":"Admin"},{"name":"GF_AUTH_DISABLE_LOGIN_FORM","value":"true"}],"image":"grafana/grafana:10.1.0","name":"grafana","ports":[{"containerPort":3000}],"volumeMounts":[{"mountPath":"/etc/grafana/provisioning/datasources","name":"datasources"}]}],"volumes":[{"configMap":{"name":"grafana-datasources"},"name":"datasources"}]}}}}
+
+        '
+    creationTimestamp: '2026-02-26T13:11:19Z'
     generation: 2
     name: grafana
     namespace: monitoring
-    resourceVersion: "174069"
+    resourceVersion: '174069'
     uid: caf0795d-f316-4f99-8eaf-5af76059afcf
   spec:
     progressDeadlineSeconds: 600
@@ -94,18 +96,18 @@ items:
     template:
       metadata:
         annotations:
-          kubectl.kubernetes.io/restartedAt: "2026-02-26T13:54:43Z"
+          kubectl.kubernetes.io/restartedAt: '2026-02-26T13:54:43Z'
         labels:
           app: grafana
       spec:
         containers:
         - env:
           - name: GF_AUTH_ANONYMOUS_ENABLED
-            value: "true"
+            value: 'true'
           - name: GF_AUTH_ANONYMOUS_ORG_ROLE
             value: Admin
           - name: GF_AUTH_DISABLE_LOGIN_FORM
-            value: "true"
+            value: 'true'
           image: grafana/grafana:10.1.0
           imagePullPolicy: IfNotPresent
           name: grafana
@@ -131,17 +133,17 @@ items:
   status:
     availableReplicas: 1
     conditions:
-    - lastTransitionTime: "2026-02-26T13:11:21Z"
-      lastUpdateTime: "2026-02-26T13:11:21Z"
+    - lastTransitionTime: '2026-02-26T13:11:21Z'
+      lastUpdateTime: '2026-02-26T13:11:21Z'
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
-      status: "True"
+      status: 'True'
       type: Available
-    - lastTransitionTime: "2026-02-26T13:11:19Z"
-      lastUpdateTime: "2026-02-26T13:54:46Z"
+    - lastTransitionTime: '2026-02-26T13:11:19Z'
+      lastUpdateTime: '2026-02-26T13:54:46Z'
       message: ReplicaSet "grafana-77848dd95c" has successfully progressed.
       reason: NewReplicaSetAvailable
-      status: "True"
+      status: 'True'
       type: Progressing
     observedGeneration: 2
     readyReplicas: 1
@@ -152,14 +154,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:apps/Deployment:monitoring/prometheus
-      deployment.kubernetes.io/revision: "11"
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/Deployment:monitoring/prometheus"},"name":"prometheus","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"prometheus"}},"template":{"metadata":{"labels":{"app":"prometheus"}},"spec":{"containers":[{"args":["--config.file=/etc/prometheus/prometheus.yml"],"image":"prom/prometheus:latest","name":"prometheus","ports":[{"containerPort":9090}],"volumeMounts":[{"mountPath":"/etc/prometheus","name":"config"}]}],"volumes":[{"configMap":{"name":"prometheus-config"},"name":"config"}]}}}}
-    creationTimestamp: "2026-02-26T13:11:19Z"
+      deployment.kubernetes.io/revision: '11'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:apps/Deployment:monitoring/prometheus"},"name":"prometheus","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"prometheus"}},"template":{"metadata":{"labels":{"app":"prometheus"}},"spec":{"containers":[{"args":["--config.file=/etc/prometheus/prometheus.yml"],"image":"prom/prometheus:latest","name":"prometheus","ports":[{"containerPort":9090}],"volumeMounts":[{"mountPath":"/etc/prometheus","name":"config"}]}],"volumes":[{"configMap":{"name":"prometheus-config"},"name":"config"}]}}}}
+
+        '
+    creationTimestamp: '2026-02-26T13:11:19Z'
     generation: 11
     name: prometheus
     namespace: monitoring
-    resourceVersion: "188815"
+    resourceVersion: '188815'
     uid: b78259b8-20f0-4b9a-b83e-f35729e335c7
   spec:
     progressDeadlineSeconds: 600
@@ -176,7 +179,7 @@ items:
     template:
       metadata:
         annotations:
-          kubectl.kubernetes.io/restartedAt: "2026-02-26T14:33:20Z"
+          kubectl.kubernetes.io/restartedAt: '2026-02-26T14:33:20Z'
         labels:
           app: prometheus
       spec:
@@ -208,22 +211,21 @@ items:
   status:
     availableReplicas: 1
     conditions:
-    - lastTransitionTime: "2026-02-26T13:11:31Z"
-      lastUpdateTime: "2026-02-26T13:11:31Z"
+    - lastTransitionTime: '2026-02-26T13:11:31Z'
+      lastUpdateTime: '2026-02-26T13:11:31Z'
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
-      status: "True"
+      status: 'True'
       type: Available
-    - lastTransitionTime: "2026-02-26T13:11:19Z"
-      lastUpdateTime: "2026-02-26T14:33:22Z"
+    - lastTransitionTime: '2026-02-26T13:11:19Z'
+      lastUpdateTime: '2026-02-26T14:33:22Z'
       message: ReplicaSet "prometheus-6ccc54fccf" has successfully progressed.
       reason: NewReplicaSetAvailable
-      status: "True"
+      status: 'True'
       type: Progressing
     observedGeneration: 11
     readyReplicas: 1
     replicas: 1
     updatedReplicas: 1
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

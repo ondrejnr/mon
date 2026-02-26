@@ -5,51 +5,63 @@ items:
     init.php: <?php // Initialized ?>
   kind: ConfigMap
   metadata:
-    creationTimestamp: "2026-02-25T19:01:26Z"
+    creationTimestamp: '2026-02-25T19:01:26Z'
     name: analytics-script
     namespace: lamp
-    resourceVersion: "30701"
+    resourceVersion: '30701'
     uid: 461e7b3a-7859-4003-819a-fffc08039d1f
 - apiVersion: v1
   data:
-    index.php: "<h1>\U0001F680 GitOps Rebirth: Automatika funguje!</h1><?php phpinfo();
-      ?>"
+    index.php: '<h1>🚀 GitOps Rebirth: Automatika funguje!</h1><?php phpinfo(); ?>'
   kind: ConfigMap
   metadata:
-    creationTimestamp: "2026-02-25T17:38:59Z"
+    creationTimestamp: '2026-02-25T17:38:59Z'
     labels:
       kustomize.toolkit.fluxcd.io/name: flux-system
       kustomize.toolkit.fluxcd.io/namespace: flux-system
     name: apache-index
     namespace: lamp
-    resourceVersion: "23866"
+    resourceVersion: '23866'
     uid: 4f631f0b-7aee-4a9a-bf8b-d3f3f7bbc853
 - apiVersion: v1
   data:
-    health.php: |
-      <?php
+    health.php: '<?php
+
       echo "OK";
+
       ?>
+
+      '
   kind: ConfigMap
   metadata:
-    creationTimestamp: "2026-02-25T19:01:25Z"
+    creationTimestamp: '2026-02-25T19:01:25Z'
     name: health-script
     namespace: lamp
-    resourceVersion: "30699"
+    resourceVersion: '30699'
     uid: 664f554a-dd50-4403-99d5-d64f3c9871de
 - apiVersion: v1
   data:
-    ca.crt: |
-      -----BEGIN CERTIFICATE-----
+    ca.crt: '-----BEGIN CERTIFICATE-----
+
       MIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
+
       dmVyLWNhQDE3NzIwMjYxMDUwHhcNMjYwMjI1MTMyODI1WhcNMzYwMjIzMTMyODI1
+
       WjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE3NzIwMjYxMDUwWTATBgcqhkjO
+
       PQIBBggqhkjOPQMBBwNCAAQmMwFxPzFfutsOk73AwmN9a7oWm0jyevkVBqVHQ5gV
+
       0e952oBQveMPbtJ82s5JB2isVYM7DRXLiHcKGLn0Vh0ao0IwQDAOBgNVHQ8BAf8E
+
       BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUG3RhGTthqrEFSGLhlb18
+
       ciRUIPgwCgYIKoZIzj0EAwIDSAAwRQIhAIPJHd8LCfa00hpdZVhTdu4KOT+NbjXF
+
       nmI0hgUSqoxAAiB1Sw5XKkkCOKOxAaqtCRVlO7jzhidAmtJkCY6auLYHVg==
+
       -----END CERTIFICATE-----
+
+      '
   kind: ConfigMap
   metadata:
     annotations:
@@ -57,11 +69,10 @@ items:
         kube-apiserver when using internal endpoints such as the internal service
         IP or kubernetes.default.svc. No other usage is guaranteed across distributions
         of Kubernetes clusters.
-    creationTimestamp: "2026-02-25T17:38:53Z"
+    creationTimestamp: '2026-02-25T17:38:53Z'
     name: kube-root-ca.crt
     namespace: lamp
-    resourceVersion: "22881"
+    resourceVersion: '22881'
     uid: f5bb5f69-f95d-4b79-abf6-edf19649ad86
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

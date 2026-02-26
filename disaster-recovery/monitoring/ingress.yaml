@@ -5,14 +5,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:networking.k8s.io/Ingress:monitoring/alertmanager-ingress
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:networking.k8s.io/Ingress:monitoring/alertmanager-ingress"},"name":"alertmanager-ingress","namespace":"monitoring"},"spec":{"ingressClassName":"nginx","rules":[{"host":"alertmanager.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"alertmanager","port":{"number":9093}}},"path":"/","pathType":"Prefix"}]}}]}}
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:networking.k8s.io/Ingress:monitoring/alertmanager-ingress"},"name":"alertmanager-ingress","namespace":"monitoring"},"spec":{"ingressClassName":"nginx","rules":[{"host":"alertmanager.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"alertmanager","port":{"number":9093}}},"path":"/","pathType":"Prefix"}]}}]}}
+
+        '
       kubernetes.io/ingress.class: nginx
-    creationTimestamp: "2026-02-26T14:54:21Z"
+    creationTimestamp: '2026-02-26T14:54:21Z'
     generation: 1
     name: alertmanager-ingress
     namespace: monitoring
-    resourceVersion: "194233"
+    resourceVersion: '194233'
     uid: a47ebb10-75da-47a7-954c-f49cee3ee4ea
   spec:
     ingressClassName: nginx
@@ -36,14 +37,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:networking.k8s.io/Ingress:monitoring/grafana-ingress
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:networking.k8s.io/Ingress:monitoring/grafana-ingress"},"name":"grafana-ingress","namespace":"monitoring"},"spec":{"ingressClassName":"nginx","rules":[{"host":"grafana.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"grafana","port":{"number":3000}}},"path":"/","pathType":"Prefix"}]}}]}}
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:networking.k8s.io/Ingress:monitoring/grafana-ingress"},"name":"grafana-ingress","namespace":"monitoring"},"spec":{"ingressClassName":"nginx","rules":[{"host":"grafana.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"grafana","port":{"number":3000}}},"path":"/","pathType":"Prefix"}]}}]}}
+
+        '
       kubernetes.io/ingress.class: nginx
-    creationTimestamp: "2026-02-26T14:54:21Z"
+    creationTimestamp: '2026-02-26T14:54:21Z'
     generation: 6
     name: grafana-ingress
     namespace: monitoring
-    resourceVersion: "195647"
+    resourceVersion: '195647'
     uid: 46f8ba9e-f76c-4e0f-8206-548a6c12139a
   spec:
     ingressClassName: nginx
@@ -67,14 +69,15 @@ items:
   metadata:
     annotations:
       argocd.argoproj.io/tracking-id: monitoring-stack:networking.k8s.io/Ingress:monitoring/prometheus-ingress
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:networking.k8s.io/Ingress:monitoring/prometheus-ingress"},"name":"prometheus-ingress","namespace":"monitoring"},"spec":{"ingressClassName":"nginx","rules":[{"host":"prometheus.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"prometheus","port":{"number":9090}}},"path":"/","pathType":"Prefix"}]}}]}}
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:networking.k8s.io/Ingress:monitoring/prometheus-ingress"},"name":"prometheus-ingress","namespace":"monitoring"},"spec":{"ingressClassName":"nginx","rules":[{"host":"prometheus.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"prometheus","port":{"number":9090}}},"path":"/","pathType":"Prefix"}]}}]}}
+
+        '
       kubernetes.io/ingress.class: nginx
-    creationTimestamp: "2026-02-26T14:54:21Z"
+    creationTimestamp: '2026-02-26T14:54:21Z'
     generation: 1
     name: prometheus-ingress
     namespace: monitoring
-    resourceVersion: "194235"
+    resourceVersion: '194235'
     uid: c4317ec6-af29-4e6a-9891-4a8c53137ff1
   spec:
     ingressClassName: nginx
@@ -94,5 +97,4 @@ items:
       ingress:
       - ip: 10.156.15.202
 kind: List
-metadata:
-  resourceVersion: ""
+metadata: {}

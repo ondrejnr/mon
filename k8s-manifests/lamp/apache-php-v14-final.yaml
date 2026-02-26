@@ -31,7 +31,7 @@ spec:
         - containerPort: 9000
       - name: apache-exporter
         image: bitnami/apache-exporter:latest
-        args: ["--apache_status_url", "http://localhost/server-status?auto"]
+        args: ["--scrape_uri", "http://localhost/server-status?auto"]
         ports:
         - containerPort: 9117
       - name: phpfpm-exporter

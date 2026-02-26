@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-custom-app
+  namespace: web-stack
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-custom-app
+  template:
+    metadata:
+      labels:
+        app: my-custom-app
+    spec:
+      containers:
+      - name: web
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-custom-app-svc
+  namespace: web-stack
+spec:
+  selector:
+    app: my-custom-app
+  ports:
+  - port: 80
+    targetPort: 80

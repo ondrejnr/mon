@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-php
+  namespace: lamp
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  - name: apache-metrics
+    port: 9117
+    targetPort: 9117
+  - name: php-metrics
+    port: 9253
+    targetPort: 9253
+  selector:
+    app: apache-php # TOTO MUSÍ SEDIEŤ

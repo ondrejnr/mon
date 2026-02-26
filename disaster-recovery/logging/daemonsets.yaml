@@ -1,0 +1,164 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: DaemonSet
+  metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"name":"fluentd","namespace":"logging"},"spec":{"selector":{"matchLabels":{"app":"fluentd"}},"template":{"metadata":{"labels":{"app":"fluentd"}},"spec":{"containers":[{"env":[{"name":"FLUENT_ELASTICSEARCH_HOST","value":"elasticsearch.logging"},{"name":"FLUENT_ELASTICSEARCH_PORT","value":"9200"},{"name":"FLUENT_ELASTICSEARCH_INDEX_NAME","value":"lamp-logs"}],"image":"fluent/fluentd-kubernetes-daemonset:v1-debian-elasticsearch","name":"fluentd","volumeMounts":[{"mountPath":"/var/log","name":"varlog"},{"mountPath":"/var/lib/docker/containers","name":"containers","readOnly":true}]}],"serviceAccountName":"fluentd","tolerations":[{"effect":"NoSchedule","operator":"Exists"}],"volumes":[{"hostPath":{"path":"/var/log"},"name":"varlog"},{"hostPath":{"path":"/var/lib/docker/containers"},"name":"containers"}]}}}}
+    creationTimestamp: "2026-02-26T15:38:06Z"
+    generation: 1
+    name: fluentd
+    namespace: logging
+    resourceVersion: "197285"
+    uid: 61cf151b-a97f-4f0b-953f-5970c3df1d85
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: fluentd
+    template:
+      metadata:
+        labels:
+          app: fluentd
+      spec:
+        containers:
+        - env:
+          - name: FLUENT_ELASTICSEARCH_HOST
+            value: elasticsearch.logging
+          - name: FLUENT_ELASTICSEARCH_PORT
+            value: "9200"
+          - name: FLUENT_ELASTICSEARCH_INDEX_NAME
+            value: lamp-logs
+          image: fluent/fluentd-kubernetes-daemonset:v1-debian-elasticsearch
+          imagePullPolicy: IfNotPresent
+          name: fluentd
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/log
+            name: varlog
+          - mountPath: /var/lib/docker/containers
+            name: containers
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: fluentd
+        serviceAccountName: fluentd
+        terminationGracePeriodSeconds: 30
+        tolerations:
+        - effect: NoSchedule
+          operator: Exists
+        volumes:
+        - hostPath:
+            path: /var/log
+            type: ""
+          name: varlog
+        - hostPath:
+            path: /var/lib/docker/containers
+            type: ""
+          name: containers
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate
+  status:
+    currentNumberScheduled: 1
+    desiredNumberScheduled: 1
+    numberAvailable: 1
+    numberMisscheduled: 0
+    numberReady: 1
+    observedGeneration: 1
+    updatedNumberScheduled: 1
+- apiVersion: apps/v1
+  kind: DaemonSet
+  metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "8"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"name":"vector","namespace":"logging"},"spec":{"selector":{"matchLabels":{"app":"vector"}},"template":{"metadata":{"labels":{"app":"vector"}},"spec":{"containers":[{"env":[{"name":"VECTOR_SELF_NODE_NAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}}],"image":"timberio/vector:0.34.0-debian","name":"vector","securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/etc/vector/","name":"config","readOnly":true},{"mountPath":"/var/lib/vector","name":"data"},{"mountPath":"/var/log","name":"logs"}]}],"serviceAccountName":"vector","volumes":[{"configMap":{"items":[{"key":"vector.yaml","path":"vector.yaml"}],"name":"vector-config"},"name":"config"},{"hostPath":{"path":"/var/lib/vector"},"name":"data"},{"hostPath":{"path":"/var/log"},"name":"logs"}]}}}}
+    creationTimestamp: "2026-02-26T09:38:47Z"
+    generation: 8
+    name: vector
+    namespace: logging
+    resourceVersion: "168093"
+    uid: b4cda9c3-4ee1-4920-8b82-ee21f3075047
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: vector
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2026-02-26T13:01:00Z"
+        labels:
+          app: vector
+      spec:
+        containers:
+        - env:
+          - name: VECTOR_SELF_NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: timberio/vector:0.34.0-debian
+          imagePullPolicy: IfNotPresent
+          name: vector
+          resources: {}
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/vector/
+            name: config
+            readOnly: true
+          - mountPath: /var/lib/vector
+            name: data
+          - mountPath: /var/log
+            name: logs
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: vector
+        serviceAccountName: vector
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            items:
+            - key: vector.yaml
+              path: vector.yaml
+            name: vector-config
+          name: config
+        - hostPath:
+            path: /var/lib/vector
+            type: ""
+          name: data
+        - hostPath:
+            path: /var/log
+            type: ""
+          name: logs
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate
+  status:
+    currentNumberScheduled: 1
+    desiredNumberScheduled: 1
+    numberAvailable: 1
+    numberMisscheduled: 0
+    numberReady: 1
+    observedGeneration: 8
+    updatedNumberScheduled: 1
+kind: List
+metadata:
+  resourceVersion: ""

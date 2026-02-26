@@ -1,0 +1,64 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2026-02-25T17:38:59Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: my-custom-app-svc
+    namespace: web-stack
+    resourceVersion: "23898"
+    uid: 8d881ae8-6a09-48dc-a1f3-c91a809cbb68
+  spec:
+    clusterIP: 10.43.118.227
+    clusterIPs:
+    - 10.43.118.227
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: my-custom-app
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: nginx-stack:/Service:web-stack/nginx-balancer
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"nginx-stack:/Service:web-stack/nginx-balancer"},"name":"nginx-balancer","namespace":"web-stack"},"spec":{"ports":[{"port":80,"targetPort":80}],"selector":{"app":"nginx-app"}}}
+    creationTimestamp: "2026-02-26T15:33:32Z"
+    name: nginx-balancer
+    namespace: web-stack
+    resourceVersion: "196583"
+    uid: 5da13de3-2a58-4b0f-93d8-793bf5f5db3a
+  spec:
+    clusterIP: 10.43.244.249
+    clusterIPs:
+    - 10.43.244.249
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: nginx-app
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

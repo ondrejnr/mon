@@ -1,0 +1,137 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: monitoring-stack:/Service:monitoring/alertmanager
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/Service:monitoring/alertmanager"},"name":"alertmanager","namespace":"monitoring"},"spec":{"ports":[{"port":9093,"targetPort":9093}],"selector":{"app":"alertmanager"}}}
+    creationTimestamp: "2026-02-26T15:19:20Z"
+    name: alertmanager
+    namespace: monitoring
+    resourceVersion: "194834"
+    uid: 4132714f-2bfb-4cd4-b78d-d453a2daf5f6
+  spec:
+    clusterIP: 10.43.194.108
+    clusterIPs:
+    - 10.43.194.108
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 9093
+      protocol: TCP
+      targetPort: 9093
+    selector:
+      app: alertmanager
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: monitoring-stack:/Service:monitoring/grafana
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/Service:monitoring/grafana"},"name":"grafana","namespace":"monitoring"},"spec":{"ports":[{"port":80,"targetPort":3000}],"selector":{"app":"grafana"}}}
+      prometheus.io/port: "3000"
+      prometheus.io/scrape: "true"
+    creationTimestamp: "2026-02-25T17:38:59Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: grafana
+    namespace: monitoring
+    resourceVersion: "192382"
+    uid: bbc5e080-2f1e-4198-ac9e-dc601c7c7b62
+  spec:
+    clusterIP: 10.43.205.235
+    clusterIPs:
+    - 10.43.205.235
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      app: grafana
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: monitoring-stack:/Service:monitoring/node-exporter
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/Service:monitoring/node-exporter"},"name":"node-exporter","namespace":"monitoring"},"spec":{"ports":[{"port":9100,"targetPort":9100}],"selector":{"app":"node-exporter"}}}
+    creationTimestamp: "2026-02-25T18:29:47Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: node-exporter
+    namespace: monitoring
+    resourceVersion: "169193"
+    uid: da13a6e3-3e0d-4ba5-8d2c-7807b02385ec
+  spec:
+    clusterIP: 10.43.202.81
+    clusterIPs:
+    - 10.43.202.81
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 9100
+      protocol: TCP
+      targetPort: 9100
+    selector:
+      app: node-exporter
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: monitoring-stack:/Service:monitoring/prometheus
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"monitoring-stack:/Service:monitoring/prometheus"},"name":"prometheus","namespace":"monitoring"},"spec":{"ports":[{"port":9090,"targetPort":9090}],"selector":{"app":"prometheus"}}}
+    creationTimestamp: "2026-02-25T17:38:59Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: prometheus
+    namespace: monitoring
+    resourceVersion: "169194"
+    uid: 4919a4b2-e3e5-4f97-b899-1c0ee3768eb6
+  spec:
+    clusterIP: 10.43.230.22
+    clusterIPs:
+    - 10.43.230.22
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 9090
+      protocol: TCP
+      targetPort: 9090
+    selector:
+      app: prometheus
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

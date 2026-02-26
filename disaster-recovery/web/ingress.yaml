@@ -1,0 +1,35 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: web-stack:networking.k8s.io/Ingress:web/nginx-ingress
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"web-stack:networking.k8s.io/Ingress:web/nginx-ingress"},"name":"nginx-ingress","namespace":"web"},"spec":{"ingressClassName":"nginx","rules":[{"host":"web.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"nginx-service","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}]}}
+    creationTimestamp: "2026-02-26T15:33:32Z"
+    generation: 1
+    name: nginx-ingress
+    namespace: web
+    resourceVersion: "196683"
+    uid: 86fc2d8a-4247-43f7-9c16-7fe83471a484
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: web.34.89.208.249.nip.io
+      http:
+        paths:
+        - backend:
+            service:
+              name: nginx-service
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.156.15.202
+kind: List
+metadata:
+  resourceVersion: ""

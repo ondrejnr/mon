@@ -1,0 +1,34 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{},"name":"kibana-ingress","namespace":"logging"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kibana.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"kibana","port":{"number":5601}}},"path":"/","pathType":"Prefix"}]}}]}}
+    creationTimestamp: "2026-02-26T15:32:43Z"
+    generation: 1
+    name: kibana-ingress
+    namespace: logging
+    resourceVersion: "196682"
+    uid: b24ac3cc-a070-41a7-90fe-fb46c5b69cbb
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kibana.34.89.208.249.nip.io
+      http:
+        paths:
+        - backend:
+            service:
+              name: kibana
+              port:
+                number: 5601
+          path: /
+          pathType: Prefix
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.156.15.202
+kind: List
+metadata:
+  resourceVersion: ""

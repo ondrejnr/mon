@@ -1,0 +1,105 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"elasticsearch","namespace":"logging"},"spec":{"ports":[{"name":"http","port":9200,"targetPort":9200},{"name":"transport","port":9300,"targetPort":9300}],"selector":{"app":"elasticsearch"}}}
+    creationTimestamp: "2026-02-25T17:38:59Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: elasticsearch
+    namespace: logging
+    resourceVersion: "197208"
+    uid: 14088c4a-e768-48e3-acb0-a220c1d57387
+  spec:
+    clusterIP: 10.43.42.59
+    clusterIPs:
+    - 10.43.42.59
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      port: 9200
+      protocol: TCP
+      targetPort: 9200
+    - name: transport
+      port: 9300
+      protocol: TCP
+      targetPort: 9300
+    selector:
+      app: elasticsearch
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"kibana","namespace":"logging"},"spec":{"ports":[{"port":5601,"targetPort":5601}],"selector":{"app":"kibana"}}}
+    creationTimestamp: "2026-02-25T17:38:59Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: kibana
+    namespace: logging
+    resourceVersion: "197223"
+    uid: 8328a5cc-90bf-46da-9c3d-403ec0428244
+  spec:
+    clusterIP: 10.43.222.136
+    clusterIPs:
+    - 10.43.222.136
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5601
+      protocol: TCP
+      targetPort: 5601
+    selector:
+      app: kibana
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2026-02-25T20:30:23Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: flux-system
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: kibana-nodeport
+    namespace: logging
+    resourceVersion: "42105"
+    uid: bd7acf8e-b9d0-4151-8a47-492e6b250d28
+  spec:
+    clusterIP: 10.43.123.37
+    clusterIPs:
+    - 10.43.123.37
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 31243
+      port: 5601
+      protocol: TCP
+      targetPort: 5601
+    selector:
+      app: kibana
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

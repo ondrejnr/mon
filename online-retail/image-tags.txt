@@ -1,0 +1,10 @@
+cnpg-cloudnative-pg: 1.28.1
+frontend: latest
+graphql-router: v1.50.0
+locust: latest
+order-service: latest
+order-worker: latest
+payment-service: latest
+product-service: latest
+products-subgraph: latest
+user-service: latest

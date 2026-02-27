@@ -1,0 +1,545 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/cnpg-webhook-service",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/cnpg-webhook-service\",\"meta.helm.sh/release-name\":\"cnpg\",\"meta.helm.sh/release-namespace\":\"online-retail\"},\"creationTimestamp\":\"2026-02-26T23:15:53Z\",\"labels\":{\"app.kubernetes.io/instance\":\"cnpg\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"cloudnative-pg\",\"app.kubernetes.io/version\":\"1.28.1\",\"helm.sh/chart\":\"cloudnative-pg-0.27.1\"},\"name\":\"cnpg-webhook-service\",\"namespace\":\"online-retail\",\"resourceVersion\":\"263589\",\"uid\":\"a60fd93f-1ee1-40b0-8c1a-7020c1e6d531\"},\"spec\":{\"clusterIP\":\"10.43.200.190\",\"clusterIPs\":[\"10.43.200.190\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"name\":\"webhook-server\",\"port\":443,\"protocol\":\"TCP\",\"targetPort\":\"webhook-server\"}],\"selector\":{\"app.kubernetes.io/instance\":\"cnpg\",\"app.kubernetes.io/name\":\"cloudnative-pg\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n",
+          "meta.helm.sh/release-name": "cnpg",
+          "meta.helm.sh/release-namespace": "online-retail"
+        },
+        "labels": {
+          "app.kubernetes.io/instance": "cnpg",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "cloudnative-pg",
+          "app.kubernetes.io/version": "1.28.1",
+          "helm.sh/chart": "cloudnative-pg-0.27.1"
+        },
+        "name": "cnpg-webhook-service",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.200.190",
+        "clusterIPs": [
+          "10.43.200.190"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "webhook-server",
+            "port": 443,
+            "protocol": "TCP",
+            "targetPort": "webhook-server"
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/instance": "cnpg",
+          "app.kubernetes.io/name": "cloudnative-pg"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/frontend",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/frontend\"},\"creationTimestamp\":\"2026-02-26T23:40:04Z\",\"name\":\"frontend\",\"namespace\":\"online-retail\",\"resourceVersion\":\"263588\",\"uid\":\"6c1c7d37-9396-48d1-ae82-a7f9807feca8\"},\"spec\":{\"clusterIP\":\"10.43.120.174\",\"clusterIPs\":[\"10.43.120.174\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"port\":80,\"protocol\":\"TCP\",\"targetPort\":80}],\"selector\":{\"app\":\"frontend\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "name": "frontend",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.120.174",
+        "clusterIPs": [
+          "10.43.120.174"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 80
+          }
+        ],
+        "selector": {
+          "app": "frontend"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"graphql-router\",\"namespace\":\"online-retail\"},\"spec\":{\"ports\":[{\"port\":4000,\"targetPort\":4000}],\"selector\":{\"app\":\"graphql-router\"}}}\n"
+        },
+        "name": "graphql-router",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.54.54",
+        "clusterIPs": [
+          "10.43.54.54"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 4000,
+            "protocol": "TCP",
+            "targetPort": 4000
+          }
+        ],
+        "selector": {
+          "app": "graphql-router"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/locust",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/locust\"},\"creationTimestamp\":\"2026-02-27T10:40:42Z\",\"finalizers\":[\"service.kubernetes.io/load-balancer-cleanup\"],\"name\":\"locust\",\"namespace\":\"online-retail\",\"resourceVersion\":\"277815\",\"uid\":\"1d0ade32-a935-44b4-9028-beece34db030\"},\"spec\":{\"allocateLoadBalancerNodePorts\":true,\"clusterIP\":\"10.43.255.144\",\"clusterIPs\":[\"10.43.255.144\"],\"externalTrafficPolicy\":\"Cluster\",\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"nodePort\":30994,\"port\":8089,\"protocol\":\"TCP\",\"targetPort\":8089}],\"selector\":{\"app\":\"locust\"},\"sessionAffinity\":\"None\",\"type\":\"LoadBalancer\"},\"status\":{\"loadBalancer\":{\"ingress\":[{\"ip\":\"10.156.15.202\",\"ipMode\":\"VIP\"}]}}}\n"
+        },
+        "finalizers": [
+          "service.kubernetes.io/load-balancer-cleanup"
+        ],
+        "name": "locust",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "allocateLoadBalancerNodePorts": true,
+        "clusterIP": "10.43.255.144",
+        "clusterIPs": [
+          "10.43.255.144"
+        ],
+        "externalTrafficPolicy": "Cluster",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "nodePort": 30994,
+            "port": 8089,
+            "protocol": "TCP",
+            "targetPort": 8089
+          }
+        ],
+        "selector": {
+          "app": "locust"
+        },
+        "sessionAffinity": "None",
+        "type": "LoadBalancer"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/order-service",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/order-service\"},\"creationTimestamp\":\"2026-02-27T08:50:22Z\",\"name\":\"order-service\",\"namespace\":\"online-retail\",\"resourceVersion\":\"269079\",\"uid\":\"ec618133-e812-4b03-a994-57e6240cd755\"},\"spec\":{\"clusterIP\":\"10.43.49.28\",\"clusterIPs\":[\"10.43.49.28\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"port\":8081,\"protocol\":\"TCP\",\"targetPort\":8081}],\"selector\":{\"app\":\"order-service\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "name": "order-service",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.49.28",
+        "clusterIPs": [
+          "10.43.49.28"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 8081,
+            "protocol": "TCP",
+            "targetPort": 8081
+          }
+        ],
+        "selector": {
+          "app": "order-service"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/payment-service",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/payment-service\"},\"creationTimestamp\":\"2026-02-27T08:32:17Z\",\"name\":\"payment-service\",\"namespace\":\"online-retail\",\"resourceVersion\":\"267642\",\"uid\":\"c5401415-3485-4d63-a5a0-6993d2233d4b\"},\"spec\":{\"clusterIP\":\"10.43.106.58\",\"clusterIPs\":[\"10.43.106.58\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"port\":8083,\"protocol\":\"TCP\",\"targetPort\":8083}],\"selector\":{\"app\":\"payment-service\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "name": "payment-service",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.106.58",
+        "clusterIPs": [
+          "10.43.106.58"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 8083,
+            "protocol": "TCP",
+            "targetPort": 8083
+          }
+        ],
+        "selector": {
+          "app": "payment-service"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/postgres-r",
+          "cnpg.io/operatorVersion": "1.28.1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/postgres-r\",\"cnpg.io/operatorVersion\":\"1.28.1\"},\"creationTimestamp\":\"2026-02-27T07:09:08Z\",\"labels\":{\"app.kubernetes.io/component\":\"database\",\"app.kubernetes.io/instance\":\"postgres\",\"app.kubernetes.io/managed-by\":\"cloudnative-pg\",\"app.kubernetes.io/name\":\"postgresql\",\"app.kubernetes.io/version\":\"18\",\"cnpg.io/cluster\":\"postgres\"},\"name\":\"postgres-r\",\"namespace\":\"online-retail\",\"ownerReferences\":[{\"apiVersion\":\"postgresql.cnpg.io/v1\",\"controller\":true,\"kind\":\"Cluster\",\"name\":\"postgres\",\"uid\":\"5340d90b-08e3-4bd1-b0cd-015e7999f484\"}],\"resourceVersion\":\"263586\",\"uid\":\"36f1b623-4588-4085-82d1-93b1a1587a67\"},\"spec\":{\"clusterIP\":\"10.43.226.6\",\"clusterIPs\":[\"10.43.226.6\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"name\":\"postgres\",\"port\":5432,\"protocol\":\"TCP\",\"targetPort\":5432}],\"selector\":{\"cnpg.io/cluster\":\"postgres\",\"cnpg.io/podRole\":\"instance\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "labels": {
+          "app.kubernetes.io/component": "database",
+          "app.kubernetes.io/instance": "postgres",
+          "app.kubernetes.io/managed-by": "cloudnative-pg",
+          "app.kubernetes.io/name": "postgresql",
+          "app.kubernetes.io/version": "18",
+          "cnpg.io/cluster": "postgres"
+        },
+        "name": "postgres-r",
+        "namespace": "online-retail",
+        "ownerReferences": [
+          {
+            "apiVersion": "postgresql.cnpg.io/v1",
+            "controller": true,
+            "kind": "Cluster",
+            "name": "postgres",
+            "uid": "5340d90b-08e3-4bd1-b0cd-015e7999f484"
+          }
+        ]
+      },
+      "spec": {
+        "clusterIP": "10.43.226.6",
+        "clusterIPs": [
+          "10.43.226.6"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "postgres",
+            "port": 5432,
+            "protocol": "TCP",
+            "targetPort": 5432
+          }
+        ],
+        "selector": {
+          "cnpg.io/cluster": "postgres",
+          "cnpg.io/podRole": "instance"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/postgres-ro",
+          "cnpg.io/operatorVersion": "1.28.1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/postgres-ro\",\"cnpg.io/operatorVersion\":\"1.28.1\"},\"creationTimestamp\":\"2026-02-27T07:09:08Z\",\"labels\":{\"app.kubernetes.io/component\":\"database\",\"app.kubernetes.io/instance\":\"postgres\",\"app.kubernetes.io/managed-by\":\"cloudnative-pg\",\"app.kubernetes.io/name\":\"postgresql\",\"app.kubernetes.io/version\":\"18\",\"cnpg.io/cluster\":\"postgres\"},\"name\":\"postgres-ro\",\"namespace\":\"online-retail\",\"ownerReferences\":[{\"apiVersion\":\"postgresql.cnpg.io/v1\",\"controller\":true,\"kind\":\"Cluster\",\"name\":\"postgres\",\"uid\":\"5340d90b-08e3-4bd1-b0cd-015e7999f484\"}],\"resourceVersion\":\"263591\",\"uid\":\"08e157ba-425a-4846-a297-aa29004a7014\"},\"spec\":{\"clusterIP\":\"10.43.130.207\",\"clusterIPs\":[\"10.43.130.207\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"name\":\"postgres\",\"port\":5432,\"protocol\":\"TCP\",\"targetPort\":5432}],\"selector\":{\"cnpg.io/cluster\":\"postgres\",\"cnpg.io/instanceRole\":\"replica\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "labels": {
+          "app.kubernetes.io/component": "database",
+          "app.kubernetes.io/instance": "postgres",
+          "app.kubernetes.io/managed-by": "cloudnative-pg",
+          "app.kubernetes.io/name": "postgresql",
+          "app.kubernetes.io/version": "18",
+          "cnpg.io/cluster": "postgres"
+        },
+        "name": "postgres-ro",
+        "namespace": "online-retail",
+        "ownerReferences": [
+          {
+            "apiVersion": "postgresql.cnpg.io/v1",
+            "controller": true,
+            "kind": "Cluster",
+            "name": "postgres",
+            "uid": "5340d90b-08e3-4bd1-b0cd-015e7999f484"
+          }
+        ]
+      },
+      "spec": {
+        "clusterIP": "10.43.130.207",
+        "clusterIPs": [
+          "10.43.130.207"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "postgres",
+            "port": 5432,
+            "protocol": "TCP",
+            "targetPort": 5432
+          }
+        ],
+        "selector": {
+          "cnpg.io/cluster": "postgres",
+          "cnpg.io/instanceRole": "replica"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/postgres-rw",
+          "cnpg.io/operatorVersion": "1.28.1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/postgres-rw\",\"cnpg.io/operatorVersion\":\"1.28.1\"},\"creationTimestamp\":\"2026-02-27T07:09:08Z\",\"labels\":{\"app.kubernetes.io/component\":\"database\",\"app.kubernetes.io/instance\":\"postgres\",\"app.kubernetes.io/managed-by\":\"cloudnative-pg\",\"app.kubernetes.io/name\":\"postgresql\",\"app.kubernetes.io/version\":\"18\",\"cnpg.io/cluster\":\"postgres\"},\"name\":\"postgres-rw\",\"namespace\":\"online-retail\",\"ownerReferences\":[{\"apiVersion\":\"postgresql.cnpg.io/v1\",\"controller\":true,\"kind\":\"Cluster\",\"name\":\"postgres\",\"uid\":\"5340d90b-08e3-4bd1-b0cd-015e7999f484\"}],\"resourceVersion\":\"263587\",\"uid\":\"59e6c5f4-c6ca-4f73-85da-d63d11c2194c\"},\"spec\":{\"clusterIP\":\"10.43.121.60\",\"clusterIPs\":[\"10.43.121.60\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"name\":\"postgres\",\"port\":5432,\"protocol\":\"TCP\",\"targetPort\":5432}],\"selector\":{\"cnpg.io/cluster\":\"postgres\",\"cnpg.io/instanceRole\":\"primary\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "labels": {
+          "app.kubernetes.io/component": "database",
+          "app.kubernetes.io/instance": "postgres",
+          "app.kubernetes.io/managed-by": "cloudnative-pg",
+          "app.kubernetes.io/name": "postgresql",
+          "app.kubernetes.io/version": "18",
+          "cnpg.io/cluster": "postgres"
+        },
+        "name": "postgres-rw",
+        "namespace": "online-retail",
+        "ownerReferences": [
+          {
+            "apiVersion": "postgresql.cnpg.io/v1",
+            "controller": true,
+            "kind": "Cluster",
+            "name": "postgres",
+            "uid": "5340d90b-08e3-4bd1-b0cd-015e7999f484"
+          }
+        ]
+      },
+      "spec": {
+        "clusterIP": "10.43.121.60",
+        "clusterIPs": [
+          "10.43.121.60"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "postgres",
+            "port": 5432,
+            "protocol": "TCP",
+            "targetPort": 5432
+          }
+        ],
+        "selector": {
+          "cnpg.io/cluster": "postgres",
+          "cnpg.io/instanceRole": "primary"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"product-service\",\"namespace\":\"online-retail\"},\"spec\":{\"ports\":[{\"port\":8080,\"targetPort\":8080}],\"selector\":{\"app\":\"product-service\"}}}\n"
+        },
+        "name": "product-service",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.136.85",
+        "clusterIPs": [
+          "10.43.136.85"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 8080,
+            "protocol": "TCP",
+            "targetPort": 8080
+          }
+        ],
+        "selector": {
+          "app": "product-service"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"products-subgraph\",\"namespace\":\"online-retail\"},\"spec\":{\"ports\":[{\"port\":8080,\"targetPort\":8080}],\"selector\":{\"app\":\"products-subgraph\"}}}\n"
+        },
+        "name": "products-subgraph",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.65.239",
+        "clusterIPs": [
+          "10.43.65.239"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 8080,
+            "protocol": "TCP",
+            "targetPort": 8080
+          }
+        ],
+        "selector": {
+          "app": "products-subgraph"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/rabbitmq",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/rabbitmq\"},\"creationTimestamp\":\"2026-02-27T11:24:04Z\",\"name\":\"rabbitmq\",\"namespace\":\"online-retail\",\"resourceVersion\":\"281429\",\"uid\":\"80b2731b-ee82-492a-8cef-cbff673ebe12\"},\"spec\":{\"clusterIP\":\"10.43.28.42\",\"clusterIPs\":[\"10.43.28.42\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"name\":\"amqp\",\"port\":5672,\"protocol\":\"TCP\",\"targetPort\":5672},{\"name\":\"management\",\"port\":15672,\"protocol\":\"TCP\",\"targetPort\":15672}],\"selector\":{\"app\":\"rabbitmq\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "name": "rabbitmq",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.28.42",
+        "clusterIPs": [
+          "10.43.28.42"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "amqp",
+            "port": 5672,
+            "protocol": "TCP",
+            "targetPort": 5672
+          },
+          {
+            "name": "management",
+            "port": 15672,
+            "protocol": "TCP",
+            "targetPort": 15672
+          }
+        ],
+        "selector": {
+          "app": "rabbitmq"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "online-retail:/Service:online-retail/user-service",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"online-retail:/Service:online-retail/user-service\"},\"creationTimestamp\":\"2026-02-27T08:03:14Z\",\"name\":\"user-service\",\"namespace\":\"online-retail\",\"resourceVersion\":\"265313\",\"uid\":\"66b188ae-2000-4456-8a74-bebc7552048e\"},\"spec\":{\"clusterIP\":\"10.43.139.142\",\"clusterIPs\":[\"10.43.139.142\"],\"internalTrafficPolicy\":\"Cluster\",\"ipFamilies\":[\"IPv4\"],\"ipFamilyPolicy\":\"SingleStack\",\"ports\":[{\"port\":8082,\"protocol\":\"TCP\",\"targetPort\":8082}],\"selector\":{\"app\":\"user-service\"},\"sessionAffinity\":\"None\",\"type\":\"ClusterIP\"},\"status\":{\"loadBalancer\":{}}}\n"
+        },
+        "name": "user-service",
+        "namespace": "online-retail"
+      },
+      "spec": {
+        "clusterIP": "10.43.139.142",
+        "clusterIPs": [
+          "10.43.139.142"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 8082,
+            "protocol": "TCP",
+            "targetPort": 8082
+          }
+        ],
+        "selector": {
+          "app": "user-service"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

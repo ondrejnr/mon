@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-online-retail
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  online-retail.json: |
+    {
+      "title": "Online Retail – Prevádzkové metriky",
+      "uid": "online-retail-operational",
+      "panels": [
+        {
+          "title": "Celkový počet objednávok (za posledných 24h)",
+          "targets": [
+            {
+              "expr": "sum(rate(http_requests_total{namespace=\"online-retail\", endpoint=\"/orders\"}[24h]))",
+              "legendFormat": "Objednávky"
+            }
+          ]
+        },
+        {
+          "title": "Tržby podľa kategórie",
+          "targets": [
+            {
+              "expr": "sum(rate(http_requests_total{namespace=\"online-retail\", endpoint=\"/products\"}[1h])) by (product_category)",
+              "legendFormat": "{{product_category}}"
+            }
+          ]
+        },
+        {
+          "title": "Aktívni zákazníci (posledných 10 min)",
+          "targets": [
+            {
+              "expr": "count by (user_id) (rate(http_requests_total{namespace=\"online-retail\"}[10m]))",
+              "legendFormat": "user {{user_id}}"
+            }
+          ]
+        },
+        {
+          "title": "Distribúcia platobných metód",
+          "targets": [
+            {
+              "expr": "sum by (payment_method) (rate(http_requests_total{namespace=\"online-retail\", endpoint=\"/payments\"}[1h]))",
+              "legendFormat": "{{payment_method}}"
+            }
+          ]
+        },
+        {
+          "title": "Počet requestov na službu (za posledných 5 min)",
+          "targets": [
+            {
+              "expr": "sum by (service) (rate(http_requests_total{namespace=\"online-retail\"}[5m]))",
+              "legendFormat": "{{service}}"
+            }
+          ]
+        }
+      ]
+    }

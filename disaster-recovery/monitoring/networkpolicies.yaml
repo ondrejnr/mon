@@ -4,11 +4,14 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-grafana-to-prometheus","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app":"grafana"}}}],"ports":[{"port":9090,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app":"prometheus"}},"policyTypes":["Ingress"]}}
-
-        '
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-grafana-to-prometheus","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app":"grafana"}}}],"ports":[{"port":9090,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app":"prometheus"}},"policyTypes":["Ingress"]}}
+    creationTimestamp: "2026-02-26T18:01:30Z"
+    generation: 1
     name: allow-grafana-to-prometheus
     namespace: monitoring
+    resourceVersion: "208203"
+    uid: b6387d97-1421-47eb-a1f2-8ce6dd5ab73a
   spec:
     ingress:
     - from:
@@ -27,11 +30,14 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-ingress-to-prometheus","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"ingress-nginx"}}}]}],"podSelector":{"matchLabels":{"app":"prometheus"}},"policyTypes":["Ingress"]}}
-
-        '
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-ingress-to-prometheus","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"ingress-nginx"}}}]}],"podSelector":{"matchLabels":{"app":"prometheus"}},"policyTypes":["Ingress"]}}
+    creationTimestamp: "2026-02-26T18:01:30Z"
+    generation: 1
     name: allow-ingress-to-prometheus
     namespace: monitoring
+    resourceVersion: "208204"
+    uid: dd9caac4-1bf2-437b-843b-77df8dbec139
   spec:
     ingress:
     - from:
@@ -47,11 +53,14 @@ items:
   kind: NetworkPolicy
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-nginx-ingress-access","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"ingress-nginx"}}}]}],"podSelector":{},"policyTypes":["Ingress"]}}
-
-        '
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-nginx-ingress-access","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"ingress-nginx"}}}]}],"podSelector":{},"policyTypes":["Ingress"]}}
+    creationTimestamp: "2026-02-26T18:01:31Z"
+    generation: 1
     name: allow-nginx-ingress-access
     namespace: monitoring
+    resourceVersion: "208205"
+    uid: ab373ca1-dde3-4721-b06a-bace9a441710
   spec:
     ingress:
     - from:
@@ -61,5 +70,58 @@ items:
     podSelector: {}
     policyTypes:
     - Ingress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-prometheus-to-alertmanager","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app":"prometheus"}}}],"ports":[{"port":9093}]}],"podSelector":{"matchLabels":{"app":"alertmanager"}}}}
+    creationTimestamp: "2026-02-26T20:28:49Z"
+    generation: 1
+    name: allow-prometheus-to-alertmanager
+    namespace: monitoring
+    resourceVersion: "215772"
+    uid: afce809c-1ecd-4dd4-9996-c333ece4a734
+  spec:
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9093
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: alertmanager
+    policyTypes:
+    - Ingress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-prometheus-to-grafana","namespace":"monitoring"},"spec":{"ingress":[{"from":[{"podSelector":{"matchLabels":{"app":"prometheus"}}}],"ports":[{"port":3000}]}],"podSelector":{"matchLabels":{"app":"grafana"}}}}
+    creationTimestamp: "2026-02-27T07:04:13Z"
+    generation: 1
+    name: allow-prometheus-to-grafana
+    namespace: monitoring
+    resourceVersion: "260493"
+    uid: ee39543e-310a-44f7-b4fc-db1dc9205029
+  spec:
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 3000
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: grafana
+    policyTypes:
+    - Ingress
 kind: List
-metadata: {}
+metadata:
+  resourceVersion: ""

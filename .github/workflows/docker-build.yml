@@ -26,6 +26,7 @@ jobs:
           payment-service: 'services/payment-service/**'
           product-service: 'services/product-service/**'
           user-service: 'services/user-service/**'
+          products-subgraph: 'services/products-subgraph/**'
 
   build:
     needs: detect-changes
@@ -51,7 +52,6 @@ jobs:
     - name: Update kustomization
       run: |
         cd online-retail
-        # Ak existuje kustomization.yaml, aktualizujeme image
         if [ -f kustomization.yaml ]; then
           kustomize edit set image ondrejnr1/${{ matrix.service }}:${{ github.sha }}
         else
@@ -64,3 +64,17 @@ jobs:
         git add online-retail/kustomization.yaml
         git commit -m "chore: update ${{ matrix.service }} image to ${{ github.sha }}" || echo "No changes"
         git push
+
+  smoke-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run smoke tests
+      run: |
+        chmod +x online-retail/tests/smoke-test.sh
+        ./online-retail/tests/smoke-test.sh
+    - name: Notify on failure
+      if: failure()
+      run: |
+        curl -X POST -H "Content-type: application/json" --data '{"text":"🚨 Smoke testy zlyhali po nasadení!"}' ${{ secrets.SLACK_WEBHOOK }} || true

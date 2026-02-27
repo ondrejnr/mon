@@ -4,6 +4,9 @@ items:
   kind: Service
   metadata:
     annotations:
+      argocd.argoproj.io/tracking-id: online-retail:/Service:online-retail/cnpg-webhook-service
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"online-retail:/Service:online-retail/cnpg-webhook-service","meta.helm.sh/release-name":"cnpg","meta.helm.sh/release-namespace":"online-retail"},"creationTimestamp":"2026-02-26T23:15:53Z","labels":{"app.kubernetes.io/instance":"cnpg","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"cloudnative-pg","app.kubernetes.io/version":"1.28.1","helm.sh/chart":"cloudnative-pg-0.27.1"},"name":"cnpg-webhook-service","namespace":"online-retail","resourceVersion":"224913","uid":"a60fd93f-1ee1-40b0-8c1a-7020c1e6d531"},"spec":{"clusterIP":"10.43.200.190","clusterIPs":["10.43.200.190"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"name":"webhook-server","port":443,"protocol":"TCP","targetPort":"webhook-server"}],"selector":{"app.kubernetes.io/instance":"cnpg","app.kubernetes.io/name":"cloudnative-pg"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
       meta.helm.sh/release-name: cnpg
       meta.helm.sh/release-namespace: online-retail
     creationTimestamp: "2026-02-26T23:15:53Z"
@@ -15,7 +18,7 @@ items:
       helm.sh/chart: cloudnative-pg-0.27.1
     name: cnpg-webhook-service
     namespace: online-retail
-    resourceVersion: "224913"
+    resourceVersion: "256521"
     uid: a60fd93f-1ee1-40b0-8c1a-7020c1e6d531
   spec:
     clusterIP: 10.43.200.190
@@ -41,12 +44,13 @@ items:
   kind: Service
   metadata:
     annotations:
+      argocd.argoproj.io/tracking-id: online-retail:/Service:online-retail/frontend
       kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"frontend","namespace":"online-retail"},"spec":{"ports":[{"port":80,"targetPort":80}],"selector":{"app":"frontend"}}}
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"online-retail:/Service:online-retail/frontend"},"creationTimestamp":"2026-02-26T23:40:04Z","name":"frontend","namespace":"online-retail","resourceVersion":"227660","uid":"6c1c7d37-9396-48d1-ae82-a7f9807feca8"},"spec":{"clusterIP":"10.43.120.174","clusterIPs":["10.43.120.174"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"frontend"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
     creationTimestamp: "2026-02-26T23:40:04Z"
     name: frontend
     namespace: online-retail
-    resourceVersion: "227660"
+    resourceVersion: "256523"
     uid: 6c1c7d37-9396-48d1-ae82-a7f9807feca8
   spec:
     clusterIP: 10.43.120.174
@@ -71,7 +75,7 @@ items:
   metadata:
     annotations:
       cnpg.io/operatorVersion: 1.28.1
-    creationTimestamp: "2026-02-26T23:16:15Z"
+    creationTimestamp: "2026-02-27T07:09:08Z"
     labels:
       app.kubernetes.io/component: database
       app.kubernetes.io/instance: postgres
@@ -86,13 +90,13 @@ items:
       controller: true
       kind: Cluster
       name: postgres
-      uid: 109619ff-a831-4885-9c8e-f5c288504b0c
-    resourceVersion: "224988"
-    uid: 268d55c6-b443-4c77-9126-9ca2acbbe732
+      uid: 5340d90b-08e3-4bd1-b0cd-015e7999f484
+    resourceVersion: "260900"
+    uid: 36f1b623-4588-4085-82d1-93b1a1587a67
   spec:
-    clusterIP: 10.43.15.236
+    clusterIP: 10.43.226.6
     clusterIPs:
-    - 10.43.15.236
+    - 10.43.226.6
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -114,7 +118,7 @@ items:
   metadata:
     annotations:
       cnpg.io/operatorVersion: 1.28.1
-    creationTimestamp: "2026-02-26T23:16:15Z"
+    creationTimestamp: "2026-02-27T07:09:08Z"
     labels:
       app.kubernetes.io/component: database
       app.kubernetes.io/instance: postgres
@@ -129,13 +133,13 @@ items:
       controller: true
       kind: Cluster
       name: postgres
-      uid: 109619ff-a831-4885-9c8e-f5c288504b0c
-    resourceVersion: "224992"
-    uid: 021f8b56-cd22-4897-9a0e-5a537e1f835a
+      uid: 5340d90b-08e3-4bd1-b0cd-015e7999f484
+    resourceVersion: "260904"
+    uid: 08e157ba-425a-4846-a297-aa29004a7014
   spec:
-    clusterIP: 10.43.142.119
+    clusterIP: 10.43.130.207
     clusterIPs:
-    - 10.43.142.119
+    - 10.43.130.207
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -157,7 +161,7 @@ items:
   metadata:
     annotations:
       cnpg.io/operatorVersion: 1.28.1
-    creationTimestamp: "2026-02-26T23:16:15Z"
+    creationTimestamp: "2026-02-27T07:09:08Z"
     labels:
       app.kubernetes.io/component: database
       app.kubernetes.io/instance: postgres
@@ -172,13 +176,13 @@ items:
       controller: true
       kind: Cluster
       name: postgres
-      uid: 109619ff-a831-4885-9c8e-f5c288504b0c
-    resourceVersion: "224996"
-    uid: c2ffc497-48fc-44e9-a87e-73c0a45dfbbb
+      uid: 5340d90b-08e3-4bd1-b0cd-015e7999f484
+    resourceVersion: "260908"
+    uid: 59e6c5f4-c6ca-4f73-85da-d63d11c2194c
   spec:
-    clusterIP: 10.43.235.190
+    clusterIP: 10.43.121.60
     clusterIPs:
-    - 10.43.235.190
+    - 10.43.121.60
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -199,12 +203,13 @@ items:
   kind: Service
   metadata:
     annotations:
+      argocd.argoproj.io/tracking-id: online-retail:/Service:online-retail/product-service
       kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"product-service","namespace":"online-retail"},"spec":{"ports":[{"port":8080,"targetPort":8080}],"selector":{"app":"product-service"}}}
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"online-retail:/Service:online-retail/product-service"},"creationTimestamp":"2026-02-26T23:44:48Z","name":"product-service","namespace":"online-retail","resourceVersion":"228158","uid":"a16ef72c-1e5d-46f2-ab0b-2c47f687be40"},"spec":{"clusterIP":"10.43.136.85","clusterIPs":["10.43.136.85"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"app":"product-service"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
     creationTimestamp: "2026-02-26T23:44:48Z"
     name: product-service
     namespace: online-retail
-    resourceVersion: "228158"
+    resourceVersion: "256522"
     uid: a16ef72c-1e5d-46f2-ab0b-2c47f687be40
   spec:
     clusterIP: 10.43.136.85

@@ -4,14 +4,15 @@ items:
   kind: Ingress
   metadata:
     annotations:
+      argocd.argoproj.io/tracking-id: online-retail:networking.k8s.io/Ingress:online-retail/frontend
       kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/"},"name":"frontend","namespace":"online-retail"},"spec":{"ingressClassName":"nginx","rules":[{"host":"shop.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"frontend","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}]}}
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"online-retail:networking.k8s.io/Ingress:online-retail/frontend","nginx.ingress.kubernetes.io/rewrite-target":"/"},"creationTimestamp":"2026-02-26T23:40:04Z","generation":1,"name":"frontend","namespace":"online-retail","resourceVersion":"227763","uid":"1ceadfa3-1755-4b77-bcff-ea2bf3fe69ec"},"spec":{"ingressClassName":"nginx","rules":[{"host":"shop.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"frontend","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}]},"status":{"loadBalancer":{"ingress":[{"ip":"10.156.15.202"}]}}}
       nginx.ingress.kubernetes.io/rewrite-target: /
     creationTimestamp: "2026-02-26T23:40:04Z"
     generation: 1
     name: frontend
     namespace: online-retail
-    resourceVersion: "227763"
+    resourceVersion: "256546"
     uid: 1ceadfa3-1755-4b77-bcff-ea2bf3fe69ec
   spec:
     ingressClassName: nginx
@@ -33,11 +34,15 @@ items:
 - apiVersion: networking.k8s.io/v1
   kind: Ingress
   metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: online-retail:networking.k8s.io/Ingress:online-retail/product-service
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"online-retail:networking.k8s.io/Ingress:online-retail/product-service"},"creationTimestamp":"2026-02-26T23:44:48Z","generation":2,"name":"product-service","namespace":"online-retail","resourceVersion":"229665","uid":"f4e0ebe7-6d09-41da-93f5-14dbca7136a7"},"spec":{"ingressClassName":"nginx","rules":[{"host":"api.34.89.208.249.nip.io","http":{"paths":[{"backend":{"service":{"name":"product-service","port":{"number":8080}}},"path":"/products","pathType":"ImplementationSpecific"}]}}]},"status":{"loadBalancer":{"ingress":[{"ip":"10.156.15.202"}]}}}
     creationTimestamp: "2026-02-26T23:44:48Z"
     generation: 2
     name: product-service
     namespace: online-retail
-    resourceVersion: "229665"
+    resourceVersion: "256547"
     uid: f4e0ebe7-6d09-41da-93f5-14dbca7136a7
   spec:
     ingressClassName: nginx

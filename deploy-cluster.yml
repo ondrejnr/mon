@@ -1,0 +1,56 @@
+---
+- name: Nasadenie celého Kubernetes klastra a služieb
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  vars:
+    # Cesta k adresáru so skriptami
+    scripts_dir: "/home/ondrejko_gulkas/mon"
+
+  tasks:
+    - name: Získaj zoznam inštalačných skriptov
+      find:
+        paths: "{{ scripts_dir }}"
+        patterns: "^[0-9]{2}-.*\\.sh$"
+        use_regex: yes
+      register: install_scripts
+
+    - name: Skontroluj, či sa našli nejaké skripty
+      fail:
+        msg: "Nenalistovali sa žiadne inštalačné skripty v zložke {{ scripts_dir }}!"
+      when: install_scripts.matched == 0
+
+    - name: Zoraď skripty podľa čísla
+      set_fact:
+        sorted_scripts: "{{ install_scripts.files | map(attribute='path') | sort | list }}"
+
+    - name: Zabezpeč, že sú skripty spustiteľné
+      file:
+        path: "{{ item }}"
+        mode: '0755'
+      loop: "{{ sorted_scripts }}"
+
+    - name: Spusti inštalačné skripty sekvenčne
+      command: "{{ item }}"
+      loop: "{{ sorted_scripts }}"
+      register: script_output
+      changed_when: script_output.rc == 0
+      
+    - name: Informácia o progrese (ukáž výstup z posledného skriptu)
+      debug:
+        msg: "Skript {{ item.item }} skončil s kódom {{ item.rc }}"
+      loop: "{{ script_output.results }}"
+      when: item.rc is defined
+
+    - name: Rýchla kontrola dostupnosti webu (Bank)
+      uri:
+        url: "http://bank.34.89.208.249.nip.io"
+        return_content: no
+        status_code: 200,301,302
+      ignore_errors: yes
+      register: bank_check
+
+    - name: Zhrnutie stavu webu
+      debug:
+        msg: "Dostupnosť Banky (LAMP): {{ 'ÚSPECH' if bank_check.status in [200,301,302] else 'ZLYHANIE' }}"
